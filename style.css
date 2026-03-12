@@ -63,10 +63,26 @@ body {
   background: transparent;
   cursor: pointer;
   pointer-events: none;
+  overflow: hidden;
 }
 
 .hotspot.is-active {
   pointer-events: auto;
+}
+
+.hotspot.number-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 10px;
+  height: 100%;
+  background: #f6e7bf;
+  opacity: 0;
+}
+
+.hotspot.number-button.is-active::before {
+  opacity: 1;
 }
 
 body.debug-hotspots .hotspot {

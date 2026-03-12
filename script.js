@@ -25,19 +25,39 @@
       { id: "img12", num: 12, image: "image/12.webp" },
     ],
 
+    // Scene 2 and Scene 3 use dedicated images.
+    sceneScreens: {
+      scene2: { image: "image/11.webp" },
+      scene3: {
+        defaultView: "scene3_300",
+        views: {
+          scene3_300: { image: "image/300.webp" },
+          scene3_301: { image: "image/301.webp" },
+        },
+      },
+    },
+
     // Button hit areas in stage coordinates (px).
-    // Each button directly opens the image with the same number.
+    // Progress buttons are hidden hotspots in the top corners.
+    // Image buttons directly open the image with the same number.
     buttons: {
+      button100: { targetScene: "scene1", x: 70, y: 100, w: 400, h: 80 },
+      button101: { targetScene: "scene2", x: 460, y: 100, w: 400, h: 80 },
+      button102: { targetScene: "scene3", x: 850, y: 100, w: 400, h: 80 },
+      button300: { targetScene3View: "scene3_300", x: 70, y: 290, w: 200, h: 200 },
+      button301: { targetScene3View: "scene3_301", x: 70, y: 500, w: 200, h: 200 },
+      progressPrev: { x: 0, y: 0, w: 140, h: 110 },
+      progressNext: { x: 1140, y: 0, w: 140, h: 110 },
       img0: { target: "img0", x: 80, y: 280, w: 200, h: 40 },
-      img1: { target: "img1", x: 80, y: 330, w: 200, h: 40 },
-      img2: { target: "img2", x: 80, y: 380, w: 200, h: 40 },
-      img3: { target: "img3", x: 80, y: 430, w: 200, h: 40 },
-      img4: { target: "img4", x: 80, y: 480, w: 200, h: 40 },
-      img5: { target: "img5", x: 80, y: 530, w: 200, h: 40 },
-      img6: { target: "img6", x: 80, y: 580, w: 200, h: 40 },
-      img7: { target: "img7", x: 80, y: 630, w: 200, h: 40 },
-      img8: { target: "img8", x: 80, y: 680, w: 200, h: 40 },
-      img9: { target: "img9", x: 80, y: 680, w: 200, h: 40 },
+      img1: { target: "img1", x: 80, y: 333, w: 200, h: 40 },
+      img2: { target: "img2", x: 80, y: 386, w: 200, h: 40 },
+      img3: { target: "img3", x: 80, y: 439, w: 200, h: 40 },
+      img4: { target: "img4", x: 80, y: 492, w: 200, h: 40 },
+      img5: { target: "img5", x: 80, y: 545, w: 200, h: 40 },
+      img6: { target: "img6", x: 80, y: 598, w: 200, h: 40 },
+      img7: { target: "img7", x: 80, y: 651, w: 200, h: 40 },
+      img8: { target: "img8", x: 80, y: 704, w: 200, h: 40 },
+      img9: { target: "img9", x: 80, y: 704, w: 200, h: 40 },
       img11: { target: "img11", x: 320, y: 80, w: 120, h: 120 },
       img12: { target: "img12", x: 460, y: 80, w: 120, h: 120 },
     },
@@ -56,15 +76,15 @@
     // Progress -> visible image numbers.
     // A button is active when its target image is included here.
     progress: [
-      { level: 1, startImage: 0, visibleImages: [0, 1] },
-      { level: 2, startImage: 0, visibleImages: [0, 1, 2, 11] },
-      { level: 3, startImage: 0, visibleImages: [0, 1, 2, 3, 11] },
-      { level: 4, startImage: 0, visibleImages: [0, 1, 2, 3, 4, 11] },
-      { level: 5, startImage: 0, visibleImages: [0, 1, 2, 3, 4, 5, 11, 12] },
-      { level: 6, startImage: 0, visibleImages: [0, 1, 2, 3, 4, 5, 6, 11, 12] },
-      { level: 7, startImage: 0, visibleImages: [0, 1, 2, 3, 4, 5, 6, 7, 11, 12] },
-      { level: 8, startImage: 0, visibleImages: [0, 1, 2, 3, 4, 5, 6, 7, 8, 11, 12] },
-      { level: 9, startImage: 0, visibleImages: [0, 1, 2, 3, 4, 5, 6, 7, 9, 11, 12] },
+      { level: 1, focusImage: 1, visibleImages: [0, 1, 100] },
+      { level: 2, focusImage: 2, visibleImages: [0, 1, 2, 100, 101] },
+      { level: 3, focusImage: 3, visibleImages: [0, 1, 2, 3, 100, 101] },
+      { level: 4, focusImage: 4, visibleImages: [0, 1, 2, 3, 4, 100, 101] },
+      { level: 5, focusImage: 5, visibleImages: [0, 1, 2, 3, 4, 5, 100, 101, 102] },
+      { level: 6, focusImage: 6, visibleImages: [0, 1, 2, 3, 4, 5, 6, 100, 101, 102] },
+      { level: 7, focusImage: 7, visibleImages: [0, 1, 2, 3, 4, 5, 6, 7, 100, 101, 102] },
+      { level: 8, focusImage: 8, visibleImages: [0, 1, 2, 3, 4, 5, 6, 7, 8, 100, 101, 102] },
+      { level: 9, focusImage: 9, visibleImages: [0, 1, 2, 3, 4, 5, 6, 7, 9, 100, 101, 102] },
     ],
   };
 
@@ -79,8 +99,10 @@
   const buttonIds = Object.keys(CONFIG.buttons);
   const hotspotElements = new Map();
 
+  let currentScene = "scene1";
+  let currentScene3View = CONFIG.sceneScreens.scene3.defaultView;
   let currentProgress = CONFIG.progress[0].level;
-  let currentScreen = imageToScreenId.get(CONFIG.progress[0].startImage) || CONFIG.screens[0].id;
+  let currentScreen = imageToScreenId.get(CONFIG.progress[0].focusImage) || CONFIG.screens[0].id;
 
   if (CONFIG.debugShowHotspots) {
     document.body.classList.add("debug-hotspots");
@@ -111,7 +133,7 @@
   }
 
   function getStartScreen(progressRule) {
-    const candidate = imageToScreenId.get(progressRule.startImage);
+    const candidate = imageToScreenId.get(progressRule.focusImage);
     if (candidate) {
       return candidate;
     }
@@ -130,6 +152,16 @@
     return CONFIG.screenButtons[screenId] || buttonIds;
   }
 
+  function isNumberButton(buttonId) {
+    const match = /^img(\d+)$/.exec(buttonId);
+    if (!match) {
+      return false;
+    }
+
+    const imageNo = Number(match[1]);
+    return imageNo >= 0 && imageNo <= 9;
+  }
+
   function ensureHotspots() {
     buttonIds.forEach((buttonId) => {
       if (hotspotElements.has(buttonId)) {
@@ -139,6 +171,9 @@
       const button = document.createElement("button");
       button.type = "button";
       button.className = "hotspot";
+      if (isNumberButton(buttonId)) {
+        button.classList.add("number-button");
+      }
       button.dataset.buttonId = buttonId;
       button.setAttribute("aria-label", buttonId);
       button.addEventListener("click", () => handleButtonClick(buttonId));
@@ -152,11 +187,77 @@
     return CONFIG.buttons[buttonId]?.target;
   }
 
+  function getButtonTargetScene(buttonId) {
+    return CONFIG.buttons[buttonId]?.targetScene;
+  }
+
+  function getButtonTargetScene3View(buttonId) {
+    return CONFIG.buttons[buttonId]?.targetScene3View;
+  }
+
+  function getSceneButtonCode(buttonId) {
+    if (buttonId === "button100") {
+      return 100;
+    }
+
+    if (buttonId === "button101") {
+      return 101;
+    }
+
+    if (buttonId === "button102") {
+      return 102;
+    }
+
+    return null;
+  }
+
+  function isScene3ViewAvailable(viewId) {
+    return Boolean(CONFIG.sceneScreens.scene3.views[viewId]);
+  }
+
   function canActivateButton(buttonId) {
     const progressRule = getProgressRule();
+    const visibleTokens = new Set(progressRule.visibleImages || []);
+    const targetScene = getButtonTargetScene(buttonId);
+    if (targetScene) {
+      const sceneButtonCode = getSceneButtonCode(buttonId);
+      return sceneButtonCode !== null && visibleTokens.has(sceneButtonCode);
+    }
+
+    const targetScene3View = getButtonTargetScene3View(buttonId);
+    if (targetScene3View) {
+      if (currentScene !== "scene3" || !isScene3ViewAvailable(targetScene3View)) {
+        return false;
+      }
+
+      if (buttonId === "button301") {
+        return currentProgress >= 7;
+      }
+
+      return true;
+    }
+
+    if (buttonId === "progressPrev") {
+      if (currentScene !== "scene1") {
+        return false;
+      }
+      return currentProgress > CONFIG.progress[0].level;
+    }
+
+    if (buttonId === "progressNext") {
+      if (currentScene !== "scene1") {
+        return false;
+      }
+      return currentProgress < CONFIG.progress[CONFIG.progress.length - 1].level;
+    }
+
+    if (currentScene !== "scene1") {
+      return false;
+    }
+
     const allowedScreens = getAllowedScreenSet(progressRule);
     const screenButtons = new Set(getScreenButtonIds(currentScreen));
-    const targetScreen = getButtonTarget(buttonId);
+    const imageTarget = getButtonTarget(buttonId);
 
     if (!allowedScreens.has(currentScreen)) {
       return false;
@@ -166,16 +267,18 @@
       return false;
     }
 
-    if (!targetScreen || !screenMap[targetScreen]) {
+    if (!imageTarget || !screenMap[imageTarget]) {
       return false;
     }
 
-    return allowedScreens.has(targetScreen);
+    return allowedScreens.has(imageTarget);
   }
 
   function renderHotspots() {
+    const activeScreenKey = currentScene === "scene1" ? currentScreen : currentScene;
+
     hotspotElements.forEach((el, buttonId) => {
-      const rect = getButtonRect(buttonId, currentScreen);
+      const rect = getButtonRect(buttonId, activeScreenKey);
       if (!rect) {
         el.classList.remove("is-active");
         el.disabled = true;
@@ -194,6 +297,20 @@
   }
 
   function renderScreen() {
+    if (currentScene === "scene2") {
+      imageEl.src = CONFIG.sceneScreens.scene2.image;
+      renderHotspots();
+      return;
+    }
+
+    if (currentScene === "scene3") {
+      const scene3View = CONFIG.sceneScreens.scene3.views[currentScene3View]
+        || CONFIG.sceneScreens.scene3.views[CONFIG.sceneScreens.scene3.defaultView];
+      imageEl.src = scene3View.image;
+      renderHotspots();
+      return;
+    }
+
     const progressRule = getProgressRule();
     const allowedScreens = getAllowedScreenSet(progressRule);
 
@@ -215,6 +332,7 @@
       return;
     }
 
+    currentScene = "scene1";
     currentScreen = screenId;
     renderScreen();
   }
@@ -228,8 +346,47 @@
     showScreen(screenId);
   }
 
+  function showScene(sceneId) {
+    if (sceneId !== "scene1" && sceneId !== "scene2" && sceneId !== "scene3") {
+      return;
+    }
+
+    currentScene = sceneId;
+    if (sceneId === "scene3") {
+      currentScene3View = CONFIG.sceneScreens.scene3.defaultView;
+    }
+    renderScreen();
+  }
+
   function handleButtonClick(buttonId) {
     if (!canActivateButton(buttonId)) {
+      return;
+    }
+
+    const targetScene = getButtonTargetScene(buttonId);
+    if (targetScene) {
+      currentScene = targetScene;
+      if (targetScene === "scene3") {
+        currentScene3View = CONFIG.sceneScreens.scene3.defaultView;
+      }
+      renderScreen();
+      return;
+    }
+
+    const targetScene3View = getButtonTargetScene3View(buttonId);
+    if (targetScene3View) {
+      currentScene3View = targetScene3View;
+      renderScreen();
+      return;
+    }
+
+    if (buttonId === "progressPrev") {
+      setProgress(currentProgress - 1, true);
+      return;
+    }
+
+    if (buttonId === "progressNext") {
+      setProgress(currentProgress + 1, true);
       return;
     }
 
@@ -247,6 +404,7 @@
       return;
     }
 
+    currentScene = "scene1";
     currentProgress = next;
     const progressRule = getProgressRule();
     const allowedScreens = getAllowedScreenSet(progressRule);
@@ -262,6 +420,14 @@
 
   function preloadImages() {
     CONFIG.screens.forEach((screen) => {
+      const img = new Image();
+      img.src = screen.image;
+    });
+
+    const img = new Image();
+    img.src = CONFIG.sceneScreens.scene2.image;
+
+    Object.values(CONFIG.sceneScreens.scene3.views).forEach((screen) => {
       const img = new Image();
       img.src = screen.image;
     });
@@ -291,7 +457,8 @@
     window.tabletApp = {
       setProgress,
       showImage,
-      getState: () => ({ currentScreen, currentProgress }),
+      showScene,
+      getState: () => ({ currentScene, currentScene3View, currentScreen, currentProgress }),
       config: CONFIG,
     };
   }
