@@ -71,6 +71,69 @@
     ],
   };
 
+  const SEARCH_INDEX = {
+    ハンペン: [
+      {
+        label: "はんぺん 小部屋A",
+        detail: "場所:level1の小部屋Aの皿の上",
+      },
+    ],
+    ハシ: [
+      {
+        label: "箸 小部屋B",
+        detail: "場所:level2の小部屋Bの棚の最上段",
+      },
+      {
+        label: "箸 小部屋B",
+        detail: "場所:level2の小部屋Bの棚の最上段",
+      },
+    ],
+    ハナ: [
+      {
+        label: "花 小部屋C",
+        detail: "場所:level3の小部屋Cの小箱の中",
+      },
+      {
+        label: "鼻 小部屋C",
+        detail: "場所:level3の小部屋Cの小箱の中",
+      },
+    ],
+    イス: [
+      {
+        label: "椅子 ホール",
+        detail: "場所:level0のホールの机周り",
+      },
+      {
+        label: "椅子 ホール",
+        detail: "場所:level0のホールの机周り",
+      },
+      {
+        label: "椅子 ホール",
+        detail: "場所:level0のホールの机周り",
+      },
+      {
+        label: "椅子 ホール",
+        detail: "場所:level0のホールの机周り",
+      },
+      {
+        label: "椅子 ホール",
+        detail: "場所:level0のホールの机周り",
+      },
+      {
+        label: "椅子 ホール",
+        detail: "場所:level0のホールの机周り",
+      },      
+      {
+        label: "椅子 ホール",
+        detail: "場所:level0のホールの机周り",
+      },            
+      {
+        label: "椅子 小部屋C",
+        detail: "場所:level0の小部屋Cの中央",
+      },
+    ],
+  };
+
   const stageShell = document.getElementById("stage-shell");
   const stage = document.getElementById("stage");
   const imageEl = document.getElementById("screen-image");
@@ -79,6 +142,9 @@
   const scene2SearchForm = document.getElementById("scene2-search-form");
   const scene2SearchInput = document.getElementById("scene2-search-input");
   const scene2ResultsBody = document.getElementById("scene2-results-body");
+  const scene2DetailModal = document.getElementById("scene2-detail-modal");
+  const scene2DetailBody = document.getElementById("scene2-detail-body");
+  const scene2DetailClose = document.getElementById("scene2-detail-close");
   const hotspotLayer = document.getElementById("hotspot-layer");
 
   const screenMap = Object.fromEntries(CONFIG.screens.map((screen) => [screen.id, screen]));
@@ -91,6 +157,7 @@
   let currentScene3View = CONFIG.sceneScreens.scene3.defaultView;
   let currentProgress = CONFIG.progress[0].level;
   let currentScreen = imageToScreenId.get(CONFIG.progress[0].focusImage) || CONFIG.screens[0].id;
+  let isScene2Composing = false;
 
   if (CONFIG.debugShowHotspots) {
     document.body.classList.add("debug-hotspots");
@@ -116,22 +183,85 @@
   function setScene2Active(isActive) {
     document.body.classList.toggle("scene2-active", isActive);
     scene2Ui.hidden = !isActive;
+    if (!isActive) {
+      closeScene2Detail();
+    }
   }
 
   function renderScene2Results(query = "") {
     const normalizedQuery = query.trim();
-    const resultText = document.createElement("p");
 
     scene2ResultsBody.replaceChildren();
 
     if (!normalizedQuery) {
+      const resultText = document.createElement("p");
       resultText.textContent = "\u691c\u7d22\u7d50\u679c\u306f\u672a\u8a2d\u5b9a\u3067\u3059\u3002";
       scene2ResultsBody.appendChild(resultText);
       return;
     }
 
-    resultText.textContent = `\u300c${normalizedQuery}\u300d\u306e\u691c\u7d22\u7d50\u679c\u306f\u672a\u8a2d\u5b9a\u3067\u3059\u3002`;
-    scene2ResultsBody.appendChild(resultText);
+    const results = SEARCH_INDEX[normalizedQuery];
+    if (!results || results.length === 0) {
+      const resultText = document.createElement("p");
+      resultText.textContent = `\u300c${normalizedQuery}\u300d\u306e\u691c\u7d22\u7d50\u679c\u306f\u3042\u308a\u307e\u305b\u3093\u3002`;
+      scene2ResultsBody.appendChild(resultText);
+      return;
+    }
+
+    const list = document.createElement("div");
+    list.className = "scene2-result-list";
+
+    results.forEach((result) => {
+      if (result.type === "more") {
+        const more = document.createElement("p");
+        more.className = "scene2-result-more";
+        more.textContent = result.label;
+        list.appendChild(more);
+        return;
+      }
+
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "scene2-result-item";
+      button.textContent = result.label;
+      button.addEventListener("click", () => {
+        openScene2Detail(result.detail);
+      });
+      list.appendChild(button);
+    });
+
+    scene2ResultsBody.appendChild(list);
+  }
+
+  function openScene2Detail(detailText) {
+    const detail = document.createElement("p");
+    detail.textContent = detailText;
+    scene2DetailBody.replaceChildren(detail);
+    scene2DetailModal.classList.add("is-open");
+    scene2DetailModal.setAttribute("aria-hidden", "false");
+  }
+
+  function closeScene2Detail() {
+    scene2DetailBody.replaceChildren();
+    scene2DetailModal.classList.remove("is-open");
+    scene2DetailModal.setAttribute("aria-hidden", "true");
+  }
+
+  function toKatakana(value) {
+    return value.replace(/[\u3041-\u3096]/g, (char) =>
+      String.fromCharCode(char.charCodeAt(0) + 0x60)
+    );
+  }
+
+  function normalizeScene2Input() {
+    const converted = toKatakana(scene2SearchInput.value)
+      .replace(/\s+/g, "")
+      .replace(/[^\u30A1-\u30FA\u30FC\u30FD\u30FE]/g, "");
+    if (scene2SearchInput.value !== converted) {
+      const caret = scene2SearchInput.selectionStart ?? converted.length;
+      scene2SearchInput.value = converted;
+      scene2SearchInput.setSelectionRange(caret, caret);
+    }
   }
 
   function getAllowedScreenSet(progressRule) {
@@ -168,7 +298,7 @@
     }
 
     const imageNo = Number(match[1]);
-    return imageNo >= 1 && imageNo <= 9;
+    return imageNo >= 0 && imageNo <= 9;
   }
 
   function ensureHotspots() {
@@ -458,13 +588,39 @@
   }
 
   function setupScene2Search() {
+    scene2SearchInput.addEventListener("compositionstart", () => {
+      isScene2Composing = true;
+    });
+
+    scene2SearchInput.addEventListener("compositionend", () => {
+      isScene2Composing = false;
+      normalizeScene2Input();
+    });
+
+    scene2SearchInput.addEventListener("input", () => {
+      if (!isScene2Composing) {
+        normalizeScene2Input();
+      }
+    });
+
     scene2SearchForm.addEventListener("submit", (event) => {
       event.preventDefault();
+      closeScene2Detail();
       renderScene2Results(scene2SearchInput.value);
     });
 
     scene2CloseButton.addEventListener("click", () => {
       showScene("scene1");
+    });
+
+    scene2DetailClose.addEventListener("click", () => {
+      closeScene2Detail();
+    });
+
+    scene2DetailModal.addEventListener("click", (event) => {
+      if (event.target === scene2DetailModal) {
+        closeScene2Detail();
+      }
     });
   }
 

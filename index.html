@@ -17,9 +17,10 @@
               <input
                 id="scene2-search-input"
                 class="scene2-search-input"
-                type="search"
+                type="text"
                 name="query"
                 lang="ja"
+                inputmode="text"
                 placeholder="検索ワードを入力"
                 autocomplete="off"
                 autocapitalize="off"
@@ -32,6 +33,19 @@
             <section id="scene2-results" class="scene2-results" aria-live="polite">
               <div id="scene2-results-body" class="scene2-results-body">
                 <p>検索結果は未設定です。</p>
+              </div>
+            </section>
+            <section id="scene2-detail-modal" class="scene2-detail-modal" aria-hidden="true">
+              <div class="scene2-detail-card" role="dialog" aria-modal="true" aria-label="検索結果詳細">
+                <button
+                  id="scene2-detail-close"
+                  class="scene2-detail-close"
+                  type="button"
+                  aria-label="詳細を閉じる"
+                >
+                  ×
+                </button>
+                <div id="scene2-detail-body" class="scene2-detail-body"></div>
               </div>
             </section>
           </div>

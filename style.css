@@ -58,6 +58,7 @@ body {
   padding: 40px;
   background: #000;
   color: #dee1c6;
+  z-index: 3;
 }
 
 body.scene2-active #scene2-ui {
@@ -66,6 +67,10 @@ body.scene2-active #scene2-ui {
 
 body.scene2-active #screen-image {
   display: none;
+}
+
+body.scene2-active #hotspot-layer {
+  pointer-events: none;
 }
 
 .scene2-panel {
@@ -80,12 +85,12 @@ body.scene2-active #screen-image {
 
 .scene2-close-button {
   width: 96px;
-  min-height: 96px;
+  min-height: 86px;
   border: 3px solid #dee1c6;
   background: #000;
   color: #dee1c6;
   font: inherit;
-  font-size: 48px;
+  font-size: 43px;
   line-height: 1;
   cursor: pointer;
   padding: 0;
@@ -107,7 +112,7 @@ body.scene2-active #screen-image {
 .scene2-search-input,
 .scene2-search-button,
 .scene2-close-button {
-  min-height: 96px;
+  min-height: 86px;
   border: 3px solid #dee1c6;
   font: inherit;
 }
@@ -116,7 +121,7 @@ body.scene2-active #screen-image {
   padding: 0 30px;
   background: #000;
   color: #dee1c6;
-  font-size: 34px;
+  font-size: 31px;
 }
 
 .scene2-search-input::placeholder {
@@ -132,7 +137,7 @@ body.scene2-active #screen-image {
 .scene2-search-button {
   background: #dee1c6;
   color: #000;
-  font-size: 32px;
+  font-size: 29px;
   font-weight: 700;
   cursor: pointer;
 }
@@ -149,6 +154,87 @@ body.scene2-active #screen-image {
   overflow: auto;
   font-size: 34px;
   line-height: 1.6;
+}
+
+.scene2-result-list {
+  display: grid;
+  gap: 10px;
+}
+
+.scene2-result-item {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  color: #dee1c6;
+  padding: 0;
+  text-align: left;
+  font: inherit;
+  font-size: 34px;
+  line-height: 1.4;
+  cursor: pointer;
+}
+
+.scene2-result-item:focus {
+  outline: 3px solid rgba(222, 225, 198, 0.45);
+  outline-offset: 2px;
+}
+
+.scene2-result-more {
+  margin: 0;
+  padding: 0 6px;
+  text-align: center;
+}
+
+.scene2-detail-modal {
+  position: absolute;
+  inset: 0;
+  display: none;
+  place-items: center;
+  background: rgba(0, 0, 0, 0.72);
+  z-index: 4;
+}
+
+.scene2-detail-modal.is-open {
+  display: grid;
+}
+
+.scene2-detail-card {
+  position: relative;
+  width: min(860px, calc(100% - 120px));
+  min-height: 260px;
+  border: 3px solid #dee1c6;
+  background: #000;
+  padding: 44px 110px 44px 44px;
+}
+
+.scene2-detail-close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 64px;
+  height: 64px;
+  border: 3px solid #dee1c6;
+  background: #000;
+  color: #dee1c6;
+  font: inherit;
+  font-size: 38px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+}
+
+.scene2-detail-close:focus {
+  outline: 3px solid rgba(222, 225, 198, 0.45);
+  outline-offset: 2px;
+}
+
+.scene2-detail-body {
+  font-size: 34px;
+  line-height: 1.7;
+}
+
+.scene2-detail-body p {
+  margin: 0;
 }
 
 .scene2-results-body p {
