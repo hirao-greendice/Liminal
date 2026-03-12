@@ -1,15 +1,12 @@
 (() => {
-  // ====== Global config: update these values when needed ======
   const CONFIG = {
     display: {
       width: 1280,
       height: 800,
     },
 
-    // Set to true only while tuning button hit areas.
     debugShowHotspots: false,
 
-    // All image screens. "num" is the image number used in progress rules.
     screens: [
       { id: "img0", num: 0, image: "image/0.webp" },
       { id: "img1", num: 1, image: "image/1.webp" },
@@ -25,9 +22,8 @@
       { id: "img12", num: 12, image: "image/12.webp" },
     ],
 
-    // Scene 2 and Scene 3 use dedicated images.
     sceneScreens: {
-      scene2: { image: "image/11.webp" },
+      scene2: {},
       scene3: {
         defaultView: "scene3_300",
         views: {
@@ -37,9 +33,6 @@
       },
     },
 
-    // Button hit areas in stage coordinates (px).
-    // Progress buttons are hidden hotspots in the top corners.
-    // Image buttons directly open the image with the same number.
     buttons: {
       button100: { targetScene: "scene1", x: 70, y: 100, w: 400, h: 80 },
       button101: { targetScene: "scene2", x: 460, y: 100, w: 400, h: 80 },
@@ -62,19 +55,9 @@
       img12: { target: "img12", x: 460, y: 80, w: 120, h: 120 },
     },
 
-    // Optional per-screen button list.
-    // If omitted for a screen, all buttons are treated as candidates.
     screenButtons: {},
-
-    // Optional per-screen button position override.
-    // Example:
-    // img3: {
-    //   img11: { x: 500, y: 200, w: 250, h: 160 }
-    // }
     screenButtonOverrides: {},
 
-    // Progress -> visible image numbers.
-    // A button is active when its target image is included here.
     progress: [
       { level: 1, focusImage: 1, visibleImages: [0, 1, 100] },
       { level: 2, focusImage: 2, visibleImages: [0, 1, 2, 100, 101] },
@@ -91,6 +74,11 @@
   const stageShell = document.getElementById("stage-shell");
   const stage = document.getElementById("stage");
   const imageEl = document.getElementById("screen-image");
+  const scene2Ui = document.getElementById("scene2-ui");
+  const scene2CloseButton = document.getElementById("scene2-close-button");
+  const scene2SearchForm = document.getElementById("scene2-search-form");
+  const scene2SearchInput = document.getElementById("scene2-search-input");
+  const scene2ResultsBody = document.getElementById("scene2-results-body");
   const hotspotLayer = document.getElementById("hotspot-layer");
 
   const screenMap = Object.fromEntries(CONFIG.screens.map((screen) => [screen.id, screen]));
@@ -123,6 +111,27 @@
 
   function getProgressRule() {
     return progressMap.get(currentProgress) || CONFIG.progress[0];
+  }
+
+  function setScene2Active(isActive) {
+    document.body.classList.toggle("scene2-active", isActive);
+    scene2Ui.hidden = !isActive;
+  }
+
+  function renderScene2Results(query = "") {
+    const normalizedQuery = query.trim();
+    const resultText = document.createElement("p");
+
+    scene2ResultsBody.replaceChildren();
+
+    if (!normalizedQuery) {
+      resultText.textContent = "\u691c\u7d22\u7d50\u679c\u306f\u672a\u8a2d\u5b9a\u3067\u3059\u3002";
+      scene2ResultsBody.appendChild(resultText);
+      return;
+    }
+
+    resultText.textContent = `\u300c${normalizedQuery}\u300d\u306e\u691c\u7d22\u7d50\u679c\u306f\u672a\u8a2d\u5b9a\u3067\u3059\u3002`;
+    scene2ResultsBody.appendChild(resultText);
   }
 
   function getAllowedScreenSet(progressRule) {
@@ -159,7 +168,7 @@
     }
 
     const imageNo = Number(match[1]);
-    return imageNo >= 0 && imageNo <= 9;
+    return imageNo >= 1 && imageNo <= 9;
   }
 
   function ensureHotspots() {
@@ -219,7 +228,12 @@
     const progressRule = getProgressRule();
     const visibleTokens = new Set(progressRule.visibleImages || []);
     const targetScene = getButtonTargetScene(buttonId);
+
     if (targetScene) {
+      if (currentScene === "scene2" && (buttonId === "button100" || buttonId === "button102")) {
+        return false;
+      }
+
       const sceneButtonCode = getSceneButtonCode(buttonId);
       return sceneButtonCode !== null && visibleTokens.has(sceneButtonCode);
     }
@@ -298,10 +312,12 @@
 
   function renderScreen() {
     if (currentScene === "scene2") {
-      imageEl.src = CONFIG.sceneScreens.scene2.image;
+      setScene2Active(true);
       renderHotspots();
       return;
     }
+
+    setScene2Active(false);
 
     if (currentScene === "scene3") {
       const scene3View = CONFIG.sceneScreens.scene3.views[currentScene3View]
@@ -424,9 +440,6 @@
       img.src = screen.image;
     });
 
-    const img = new Image();
-    img.src = CONFIG.sceneScreens.scene2.image;
-
     Object.values(CONFIG.sceneScreens.scene3.views).forEach((screen) => {
       const img = new Image();
       img.src = screen.image;
@@ -444,12 +457,26 @@
     });
   }
 
+  function setupScene2Search() {
+    scene2SearchForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      renderScene2Results(scene2SearchInput.value);
+    });
+
+    scene2CloseButton.addEventListener("click", () => {
+      showScene("scene1");
+    });
+  }
+
   function init() {
     setStageSizeCssVars();
     ensureHotspots();
     preloadImages();
+    setScene2Active(false);
+    renderScene2Results("");
     setProgress(CONFIG.progress[0].level, true);
     updateStageScale();
+    setupScene2Search();
     setupKeyboardForDevOnly();
 
     window.addEventListener("resize", updateStageScale);
