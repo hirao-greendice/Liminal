@@ -72,261 +72,373 @@
   };
 
   const SEARCH_INDEX = {
-    ハンペン: [
-      {
-        label: "はんぺん 小部屋A",
-        detail: "場所:level1の小部屋Aの皿の上",
-      },
-    ],
-    ハシ: [
-      {
-        label: "箸 小部屋B",
-        detail: "場所:level2の小部屋Bの箱の中",
-      },
-      {
-        label: "箸 小部屋B",
-        detail: "場所:level2の小部屋Bの箱の中",
-      },
-    ],
-    クシ: [
-      {
-        label: "串 小部屋B",
-        detail: "場所:level3の小部屋B",
-      },
-      {
-        label: "櫛 小部屋B",
-        detail: "場所:level3の小部屋B",
-      },
-    ],
-    ヒヨコ: [
-      {
-        label: "ひよこ 小部屋C",
-        detail: "場所:level4の小部屋C",
-      },
-    ],
-    ペン: [
-      {
-        label: "ぺん 小部屋A",
-        detail: "場所:level1の小部屋A",
-      },
-    ],
-    サラ: [
-      {
-        label: "皿 小部屋A",
-        detail: "場所:level1の小部屋A",
-      },
-      {
-        label: "皿 ホール",
-        detail: "場所:level1のホール　台秤",
-      },
-    ],
-    イス: [
-      {
-        label: "イス ホール",
-        detail: "場所:level0のホールの机周り",
-      },
-      {
-        label: "イス ホール",
-        detail: "場所:level0のホールの机周り",
-      },
-      {
-        label: "イス ホール",
-        detail: "場所:level0のホールの机周り",
-      },
-      {
-        label: "イス ホール",
-        detail: "場所:level0のホールの机周り",
-      },
-      {
-        label: "イス ホール",
-        detail: "場所:level0のホールの机周り",
-      },
-      {
-        label: "イス ホール",
-        detail: "場所:level0のホールの机周り",
-      },      
-      {
-        label: "イス ホール",
-        detail: "場所:level0のホールの机周り",
-      }, 
-{
-        label: "イス ホール",
-        detail: "場所:level0のホールの机周り",
-      },
-      {
-        label: "イス ホール",
-        detail: "場所:level0のホールの机周り",
-      },
-      {
-        label: "イス ホール",
-        detail: "場所:level0のホールの机周り",
-      },
-      {
-        label: "イス ホール",
-        detail: "場所:level0のホールの机周り",
-      },
-      {
-        label: "イス ホール",
-        detail: "場所:level0のホールの机周り",
-      },
-      {
-        label: "イス ホール",
-        detail: "場所:level0のホールの机周り",
-      },      
-      {
-        label: "イス ホール",
-        detail: "場所:level0のホールの机周り",
-      },   
-{
-        label: "イス ホール",
-        detail: "場所:level0のホールの机周り",
-      },
-      {
-        label: "イス ホール",
-        detail: "場所:level0のホールの机周り",
-      },
-      {
-        label: "イス ホール",
-        detail: "場所:level0のホールの机周り",
-      },
-      {
-        label: "イス ホール",
-        detail: "場所:level0のホールの机周り",
-      },
-      {
-        label: "イス ホール",
-        detail: "場所:level0のホールの机周り",
-      },
-      {
-        label: "イス ホール",
-        detail: "場所:level0のホールの机周り",
-      },      
-      {
-        label: "イス ホール",
-        detail: "場所:level0のホールの机周り",
-      },   
-{
-        label: "イス ホール",
-        detail: "場所:level0のホールの机周り",
-      },
-      {
-        label: "イス ホール",
-        detail: "場所:level0のホールの机周り",
-      },
-      {
-        label: "イス ホール",
-        detail: "場所:level0のホールの机周り",
-      },
-      {
-        label: "イス ホール",
-        detail: "場所:level0のホールの机周り",
-      },
-      {
-        label: "イス ホール",
-        detail: "場所:level0のホールの机周り",
-      },
-      {
-        label: "イス ホール",
-        detail: "場所:level0のホールの机周り",
-      },      
-      {
-        label: "イス ホール",
-        detail: "場所:level0のホールの机周り",
-      },   
-{
-        label: "イス ホール",
-        detail: "場所:level0のホールの机周り",
-      },
-      {
-        label: "イス ホール",
-        detail: "場所:level0のホールの机周り",
-      },
-      {
-        label: "イス ホール",
-        detail: "場所:level0のホールの机周り",
-      },
-      {
-        label: "イス ホール",
-        detail: "場所:level0のホールの机周り",
-      },
-      {
-        label: "イス ホール",
-        detail: "場所:level0のホールの机周り",
-      },
-      {
-        label: "イス ホール",
-        detail: "場所:level0のホールの机周り",
-      },      
-      {
-        label: "イス ホール",
-        detail: "場所:level0のホールの机周り",
-      },   
-{
-        label: "イス ホール",
-        detail: "場所:level0のホールの机周り",
-      },
-      {
-        label: "イス ホール",
-        detail: "場所:level0のホールの机周り",
-      },
-      {
-        label: "イス ホール",
-        detail: "場所:level0のホールの机周り",
-      },
-      {
-        label: "イス ホール",
-        detail: "場所:level0のホールの机周り",
-      },
-      {
-        label: "イス ホール",
-        detail: "場所:level0のホールの机周り",
-      },
-      {
-        label: "イス ホール",
-        detail: "場所:level0のホールの机周り",
-      },      
-      {
-        label: "イス ホール",
-        detail: "場所:level0のホールの机周り",
-      },   
-{
-        label: "イス ホール",
-        detail: "場所:level0のホールの机周り",
-      },
-      {
-        label: "イス ホール",
-        detail: "場所:level0のホールの机周り",
-      },
-      {
-        label: "イス ホール",
-        detail: "場所:level0のホールの机周り",
-      },
-      {
-        label: "イス ホール",
-        detail: "場所:level0のホールの机周り",
-      },
-      {
-        label: "イス ホール",
-        detail: "場所:level0のホールの机周り",
-      },
-      {
-        label: "イス ホール",
-        detail: "場所:level0のホールの机周り",
-      },      
-      {
-        label: "イス ホール",
-        detail: "場所:level0のホールの机周り",
-      },              
-      {
-        label: "イス 小部屋C",
-        detail: "場所:level0の小部屋Dの中央",
-      },
-      {
-        label: "コレイジョウケンサクデキマセン",
-        detail: "コレイジョウケンサクデキマセン",
-      },
-    ],
-  };
+  ハンペン: [
+    {
+      label: "はんぺん 小部屋A",
+      detail: `場所:level1の小部屋Aの皿の上
+大きさ:10cm
+重さ:300g`,
+    },
+  ],
+  ハシ: [
+    {
+      label: "箸 小部屋B",
+      detail: `場所:level2の小部屋Bの箱の中
+大きさ:15cm
+重さ:100g`,
+    },
+    {
+      label: "箸 小部屋B",
+      detail: `場所:level2の小部屋Bの箱の中
+大きさ:15cm
+重さ:100g`,
+    },
+  ],
+  クシ: [
+    {
+      label: "串 小部屋B",
+      detail: `場所:level3の小部屋B
+大きさ:15cm
+重さ:100g`,
+    },
+    {
+      label: "櫛 小部屋B",
+      detail: `場所:level3の小部屋B
+大きさ:15cm
+重さ:100g`,
+    },
+  ],
+  ヒヨコ: [
+    {
+      label: "ひよこ 小部屋C",
+      detail: `場所:level4の小部屋C
+大きさ:5cm
+重さ:300g`,
+    },
+  ],
+  ペン: [
+    {
+      label: "ぺん 小部屋A",
+      detail: `場所:level1の小部屋A
+大きさ:30cm
+重さ:400g`,
+    },
+  ],
+  サラ: [
+    {
+      label: "皿 小部屋A",
+      detail: `場所:level1の小部屋A
+大きさ:25cm
+重さ:400g`,
+    },
+    {
+      label: "皿 ホール",
+      detail: `場所:level1のホール　台秤
+大きさ:25cm
+重さ:400g`,
+    },
+  ],
+  イス: [
+    {
+      label: "イス ホール",
+      detail: `場所:level0のホールの机周り
+大きさ:40cm
+重さ:500g`,
+    },
+    {
+      label: "イス ホール",
+      detail: `場所:level0のホールの机周り
+大きさ:40cm
+重さ:500g`,
+    },
+    {
+      label: "イス ホール",
+      detail: `場所:level0のホールの机周り
+大きさ:40cm
+重さ:500g`,
+    },
+    {
+      label: "イス ホール",
+      detail: `場所:level0のホールの机周り
+大きさ:40cm
+重さ:500g`,
+    },
+    {
+      label: "イス ホール",
+      detail: `場所:level0のホールの机周り
+大きさ:40cm
+重さ:500g`,
+    },
+    {
+      label: "イス ホール",
+      detail: `場所:level0のホールの机周り
+大きさ:40cm
+重さ:500g`,
+    },
+    {
+      label: "イス ホール",
+      detail: `場所:level0のホールの机周り
+大きさ:40cm
+重さ:500g`,
+    },
+    {
+      label: "イス ホール",
+      detail: `場所:level0のホールの机周り
+大きさ:40cm
+重さ:500g`,
+    },
+    {
+      label: "イス ホール",
+      detail: `場所:level0のホールの机周り
+大きさ:40cm
+重さ:500g`,
+    },
+    {
+      label: "イス ホール",
+      detail: `場所:level0のホールの机周り
+大きさ:40cm
+重さ:500g`,
+    },
+    {
+      label: "イス ホール",
+      detail: `場所:level0のホールの机周り
+大きさ:40cm
+重さ:500g`,
+    },
+    {
+      label: "イス ホール",
+      detail: `場所:level0のホールの机周り
+大きさ:40cm
+重さ:500g`,
+    },
+    {
+      label: "イス ホール",
+      detail: `場所:level0のホールの机周り
+大きさ:40cm
+重さ:500g`,
+    },
+    {
+      label: "イス ホール",
+      detail: `場所:level0のホールの机周り
+大きさ:40cm
+重さ:500g`,
+    },
+    {
+      label: "イス ホール",
+      detail: `場所:level0のホールの机周り
+大きさ:40cm
+重さ:500g`,
+    },
+    {
+      label: "イス ホール",
+      detail: `場所:level0のホールの机周り
+大きさ:40cm
+重さ:500g`,
+    },
+    {
+      label: "イス ホール",
+      detail: `場所:level0のホールの机周り
+大きさ:40cm
+重さ:500g`,
+    },
+    {
+      label: "イス ホール",
+      detail: `場所:level0のホールの机周り
+大きさ:40cm
+重さ:500g`,
+    },
+    {
+      label: "イス ホール",
+      detail: `場所:level0のホールの机周り
+大きさ:40cm
+重さ:500g`,
+    },
+    {
+      label: "イス ホール",
+      detail: `場所:level0のホールの机周り
+大きさ:40cm
+重さ:500g`,
+    },
+    {
+      label: "イス ホール",
+      detail: `場所:level0のホールの机周り
+大きさ:40cm
+重さ:500g`,
+    },
+    {
+      label: "イス ホール",
+      detail: `場所:level0のホールの机周り
+大きさ:40cm
+重さ:500g`,
+    },
+    {
+      label: "イス ホール",
+      detail: `場所:level0のホールの机周り
+大きさ:40cm
+重さ:500g`,
+    },
+    {
+      label: "イス ホール",
+      detail: `場所:level0のホールの机周り
+大きさ:40cm
+重さ:500g`,
+    },
+    {
+      label: "イス ホール",
+      detail: `場所:level0のホールの机周り
+大きさ:40cm
+重さ:500g`,
+    },
+    {
+      label: "イス ホール",
+      detail: `場所:level0のホールの机周り
+大きさ:40cm
+重さ:500g`,
+    },
+    {
+      label: "イス ホール",
+      detail: `場所:level0のホールの机周り
+大きさ:40cm
+重さ:500g`,
+    },
+    {
+      label: "イス ホール",
+      detail: `場所:level0のホールの机周り
+大きさ:40cm
+重さ:500g`,
+    },
+    {
+      label: "イス ホール",
+      detail: `場所:level0のホールの机周り
+大きさ:40cm
+重さ:500g`,
+    },
+    {
+      label: "イス ホール",
+      detail: `場所:level0のホールの机周り
+大きさ:40cm
+重さ:500g`,
+    },
+    {
+      label: "イス ホール",
+      detail: `場所:level0のホールの机周り
+大きさ:40cm
+重さ:500g`,
+    },
+    {
+      label: "イス ホール",
+      detail: `場所:level0のホールの机周り
+大きさ:40cm
+重さ:500g`,
+    },
+    {
+      label: "イス ホール",
+      detail: `場所:level0のホールの机周り
+大きさ:40cm
+重さ:500g`,
+    },
+    {
+      label: "イス ホール",
+      detail: `場所:level0のホールの机周り
+大きさ:40cm
+重さ:500g`,
+    },
+    {
+      label: "イス ホール",
+      detail: `場所:level0のホールの机周り
+大きさ:40cm
+重さ:500g`,
+    },
+    {
+      label: "イス ホール",
+      detail: `場所:level0のホールの机周り
+大きさ:40cm
+重さ:500g`,
+    },
+    {
+      label: "イス ホール",
+      detail: `場所:level0のホールの机周り
+大きさ:40cm
+重さ:500g`,
+    },
+    {
+      label: "イス ホール",
+      detail: `場所:level0のホールの机周り
+大きさ:40cm
+重さ:500g`,
+    },
+    {
+      label: "イス ホール",
+      detail: `場所:level0のホールの机周り
+大きさ:40cm
+重さ:500g`,
+    },
+    {
+      label: "イス ホール",
+      detail: `場所:level0のホールの机周り
+大きさ:40cm
+重さ:500g`,
+    },
+    {
+      label: "イス ホール",
+      detail: `場所:level0のホールの机周り
+大きさ:40cm
+重さ:500g`,
+    },
+    {
+      label: "イス ホール",
+      detail: `場所:level0のホールの机周り
+大きさ:40cm
+重さ:500g`,
+    },
+    {
+      label: "イス ホール",
+      detail: `場所:level0のホールの机周り
+大きさ:40cm
+重さ:500g`,
+    },
+    {
+      label: "イス ホール",
+      detail: `場所:level0のホールの机周り
+大きさ:40cm
+重さ:500g`,
+    },
+    {
+      label: "イス ホール",
+      detail: `場所:level0のホールの机周り
+大きさ:40cm
+重さ:500g`,
+    },
+    {
+      label: "イス ホール",
+      detail: `場所:level0のホールの机周り
+大きさ:40cm
+重さ:500g`,
+    },
+    {
+      label: "イス ホール",
+      detail: `場所:level0のホールの机周り
+大きさ:40cm
+重さ:500g`,
+    },
+    {
+      label: "イス ホール",
+      detail: `場所:level0のホールの机周り
+大きさ:40cm
+重さ:500g`,
+    },
+    {
+      label: "イス 小部屋C",
+      detail: `場所:level0の小部屋Dの中央
+大きさ:40cm
+重さ:500g`,
+    },
+    {
+      label: "コレイジョウケンサクデキマセン",
+      detail: `コレイジョウケンサクデキマセン`,
+    },
+  ],
+};
 
   const stageShell = document.getElementById("stage-shell");
   const stage = document.getElementById("stage");

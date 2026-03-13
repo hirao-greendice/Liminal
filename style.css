@@ -255,6 +255,7 @@ body.scene2-active #hotspot-layer {
 
 .scene2-detail-body p {
   margin: 0;
+  white-space: pre-line;
 }
 
 .scene2-results-body p {
