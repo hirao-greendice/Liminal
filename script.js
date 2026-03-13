@@ -331,6 +331,7 @@
   const stageShell = document.getElementById("stage-shell");
   const stage = document.getElementById("stage");
   const imageEl = document.getElementById("screen-image");
+  const fullscreenToggle = document.getElementById("fullscreen-toggle");
   const scene2Ui = document.getElementById("scene2-ui");
   const scene2CloseButton = document.getElementById("scene2-close-button");
   const scene2SearchForm = document.getElementById("scene2-search-form");
@@ -439,6 +440,29 @@
     scene2DetailBody.replaceChildren();
     scene2DetailModal.classList.remove("is-open");
     scene2DetailModal.setAttribute("aria-hidden", "true");
+  }
+
+  function updateFullscreenButtonLabel() {
+    const isFullscreen = Boolean(document.fullscreenElement);
+    const label = isFullscreen ? "フルスクリーン終了" : "フルスクリーン切替";
+    fullscreenToggle.setAttribute("aria-label", label);
+    fullscreenToggle.title = label;
+  }
+
+  async function toggleFullscreen() {
+    if (!document.fullscreenEnabled) {
+      return;
+    }
+
+    try {
+      if (document.fullscreenElement) {
+        await document.exitFullscreen();
+      } else {
+        await document.documentElement.requestFullscreen();
+      }
+    } catch (error) {
+      console.error("Failed to toggle fullscreen.", error);
+    }
   }
 
   function toKatakana(value) {
@@ -818,6 +842,19 @@
     });
   }
 
+  function setupFullscreenToggle() {
+    if (!document.fullscreenEnabled) {
+      fullscreenToggle.hidden = true;
+      return;
+    }
+
+    updateFullscreenButtonLabel();
+    fullscreenToggle.addEventListener("click", () => {
+      toggleFullscreen();
+    });
+    document.addEventListener("fullscreenchange", updateFullscreenButtonLabel);
+  }
+
   function init() {
     setStageSizeCssVars();
     ensureHotspots();
@@ -827,6 +864,7 @@
     setProgress(CONFIG.progress[0].level, true);
     updateStageScale();
     setupScene2Search();
+    setupFullscreenToggle();
     setupKeyboardForDevOnly();
 
     window.addEventListener("resize", updateStageScale);

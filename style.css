@@ -51,6 +51,26 @@ body {
   pointer-events: none;
 }
 
+#fullscreen-toggle {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 220px;
+  height: 68px;
+  transform: translateX(-50%);
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: transparent;
+  cursor: pointer;
+  z-index: 5;
+}
+
+#fullscreen-toggle:focus-visible {
+  outline: 2px solid rgba(222, 225, 198, 0.4);
+  outline-offset: -2px;
+}
+
 #scene2-ui {
   position: absolute;
   inset: 0;
@@ -279,4 +299,9 @@ body.scene2-active #hotspot-layer {
 body.debug-hotspots .hotspot {
   border: 2px dashed rgba(255, 255, 255, 0.65);
   background: rgba(0, 170, 255, 0.15);
+}
+
+body.debug-hotspots #fullscreen-toggle {
+  background: rgba(255, 0, 0, 0.18);
+  outline: 2px dashed rgba(255, 255, 255, 0.65);
 }
