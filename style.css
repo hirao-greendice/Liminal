@@ -103,6 +103,10 @@ body.scene2-active #hotspot-layer {
   gap: 28px;
 }
 
+body.scene2-keyboard-enabled .scene2-panel {
+  grid-template-rows: auto 1fr auto;
+}
+
 .scene2-close-button {
   width: 96px;
   min-height: 86px;
@@ -260,6 +264,48 @@ body.scene2-active #hotspot-layer {
 
 .scene2-results-body p {
   margin: 0;
+}
+
+.scene2-keyboard {
+  display: none;
+}
+
+body.scene2-keyboard-enabled .scene2-keyboard {
+  display: grid;
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+  gap: 8px;
+  align-content: start;
+}
+
+.scene2-keyboard-key {
+  min-height: 38px;
+  border: 2px solid #dee1c6;
+  background: #000;
+  color: #dee1c6;
+  font: inherit;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+}
+
+.scene2-keyboard-key[data-action="delete"],
+.scene2-keyboard-key[data-action="clear"],
+.scene2-keyboard-key[data-action="submit"] {
+  font-size: 18px;
+  letter-spacing: 0.08em;
+}
+
+.scene2-keyboard-key[data-action="submit"] {
+  grid-column: span 2;
+  background: #dee1c6;
+  color: #000;
+  font-weight: 700;
+}
+
+.scene2-keyboard-key:focus {
+  outline: 3px solid rgba(222, 225, 198, 0.45);
+  outline-offset: 2px;
 }
 
 #hotspot-layer {

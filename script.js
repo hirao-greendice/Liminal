@@ -449,6 +449,7 @@
   const scene2SearchForm = document.getElementById("scene2-search-form");
   const scene2SearchInput = document.getElementById("scene2-search-input");
   const scene2ResultsBody = document.getElementById("scene2-results-body");
+  const scene2Keyboard = document.getElementById("scene2-keyboard");
   const scene2DetailModal = document.getElementById("scene2-detail-modal");
   const scene2DetailBody = document.getElementById("scene2-detail-body");
   const scene2DetailClose = document.getElementById("scene2-detail-close");
@@ -465,6 +466,29 @@
   let currentProgress = CONFIG.progress[0].level;
   let currentScreen = imageToScreenId.get(CONFIG.progress[0].focusImage) || CONFIG.screens[0].id;
   let isScene2Composing = false;
+  let scene2SelectionStart = 0;
+  let scene2SelectionEnd = 0;
+
+  const SCENE2_KEYBOARD_LAYOUT = [
+    ["\u30A2", "\u30A4", "\u30A6", "\u30A8", "\u30AA", "\u30E4", "\u30E6", "\u30E8", "\u30EF", "\u30F2"],
+    ["\u30AB", "\u30AD", "\u30AF", "\u30B1", "\u30B3", "\u30B5", "\u30B7", "\u30B9", "\u30BB", "\u30BD"],
+    ["\u30BF", "\u30C1", "\u30C4", "\u30C6", "\u30C8", "\u30CA", "\u30CB", "\u30CC", "\u30CD", "\u30CE"],
+    ["\u30CF", "\u30D2", "\u30D5", "\u30D8", "\u30DB", "\u30DE", "\u30DF", "\u30E0", "\u30E1", "\u30E2"],
+    ["\u30E9", "\u30EA", "\u30EB", "\u30EC", "\u30ED", "\u30F3", "\u30FC", "\u30C3", "\u30E3", "\u30E5"],
+    ["\u30AC", "\u30AE", "\u30B0", "\u30B2", "\u30B4", "\u30B6", "\u30B8", "\u30BA", "\u30BC", "\u30BE"],
+    ["\u30C0", "\u30C2", "\u30C5", "\u30C7", "\u30C9", "\u30D0", "\u30D3", "\u30D6", "\u30D9", "\u30DC"],
+    [
+      "\u30D1",
+      "\u30D4",
+      "\u30D7",
+      "\u30DA",
+      "\u30DD",
+      "\u30E7",
+      { action: "delete", label: "DEL" },
+      { action: "clear", label: "CLEAR" },
+      { action: "submit", label: "SEARCH" },
+    ],
+  ];
 
   if (CONFIG.debugShowHotspots) {
     document.body.classList.add("debug-hotspots");
@@ -492,7 +516,18 @@
     scene2Ui.hidden = !isActive;
     if (!isActive) {
       closeScene2Detail();
+      scene2SearchInput.blur();
+      return;
     }
+
+    if (!document.body.classList.contains("scene2-keyboard-enabled")) {
+      return;
+    }
+
+    requestAnimationFrame(() => {
+      scene2SearchInput.focus({ preventScroll: true });
+      syncScene2Selection();
+    });
   }
 
   function renderScene2Results(query = "") {
@@ -592,6 +627,111 @@
       scene2SearchInput.value = converted;
       scene2SearchInput.setSelectionRange(caret, caret);
     }
+  }
+
+  function syncScene2Selection() {
+    scene2SelectionStart = scene2SearchInput.selectionStart ?? scene2SearchInput.value.length;
+    scene2SelectionEnd = scene2SearchInput.selectionEnd ?? scene2SelectionStart;
+  }
+
+  function focusScene2SearchInput() {
+    scene2SearchInput.focus({ preventScroll: true });
+    scene2SearchInput.setSelectionRange(scene2SelectionStart, scene2SelectionEnd);
+  }
+
+  function insertScene2Text(value) {
+    focusScene2SearchInput();
+    scene2SearchInput.setRangeText(value, scene2SelectionStart, scene2SelectionEnd, "end");
+    normalizeScene2Input();
+    syncScene2Selection();
+  }
+
+  function deleteScene2TextBackward() {
+    const hasSelection = scene2SelectionStart !== scene2SelectionEnd;
+    const deleteStart = hasSelection
+      ? scene2SelectionStart
+      : Math.max(0, scene2SelectionStart - 1);
+    const deleteEnd = scene2SelectionEnd;
+    if (deleteStart === deleteEnd) {
+      return;
+    }
+
+    focusScene2SearchInput();
+    scene2SearchInput.setRangeText("", deleteStart, deleteEnd, "end");
+    normalizeScene2Input();
+    syncScene2Selection();
+  }
+
+  function clearScene2Input() {
+    scene2SearchInput.value = "";
+    scene2SelectionStart = 0;
+    scene2SelectionEnd = 0;
+    focusScene2SearchInput();
+  }
+
+  function submitScene2Search() {
+    closeScene2Detail();
+    renderScene2Results(scene2SearchInput.value);
+  }
+
+  function shouldEnableScene2Keyboard() {
+    const isWideViewport = window.matchMedia("(min-width: 900px)").matches;
+    const isTouchOnly = window.matchMedia("(pointer: coarse)").matches
+      && !window.matchMedia("(any-pointer: fine)").matches;
+    return isWideViewport && !isTouchOnly;
+  }
+
+  function updateScene2KeyboardVisibility() {
+    const isEnabled = shouldEnableScene2Keyboard();
+    document.body.classList.toggle("scene2-keyboard-enabled", isEnabled);
+    scene2Keyboard.hidden = !isEnabled;
+    scene2Keyboard.setAttribute("aria-hidden", String(!isEnabled));
+  }
+
+  function handleScene2KeyboardPress(key) {
+    if (typeof key === "string") {
+      insertScene2Text(key);
+      return;
+    }
+
+    if (key.action === "delete") {
+      deleteScene2TextBackward();
+      return;
+    }
+
+    if (key.action === "clear") {
+      clearScene2Input();
+      return;
+    }
+
+    if (key.action === "submit") {
+      submitScene2Search();
+    }
+  }
+
+  function createScene2Keyboard() {
+    const fragment = document.createDocumentFragment();
+
+    SCENE2_KEYBOARD_LAYOUT.forEach((row) => {
+      row.forEach((key) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "scene2-keyboard-key";
+        button.textContent = typeof key === "string" ? key : key.label;
+        if (typeof key !== "string") {
+          button.dataset.action = key.action;
+        }
+        button.addEventListener("pointerdown", (event) => {
+          event.preventDefault();
+        });
+        button.addEventListener("click", () => {
+          handleScene2KeyboardPress(key);
+        });
+        fragment.appendChild(button);
+      });
+    });
+
+    scene2Keyboard.replaceChildren(fragment);
   }
 
   function getAllowedScreenSet(progressRule) {
@@ -918,6 +1058,10 @@
   }
 
   function setupScene2Search() {
+    ["focus", "click", "keyup", "select"].forEach((eventName) => {
+      scene2SearchInput.addEventListener(eventName, syncScene2Selection);
+    });
+
     scene2SearchInput.addEventListener("compositionstart", () => {
       isScene2Composing = true;
     });
@@ -925,18 +1069,19 @@
     scene2SearchInput.addEventListener("compositionend", () => {
       isScene2Composing = false;
       normalizeScene2Input();
+      syncScene2Selection();
     });
 
     scene2SearchInput.addEventListener("input", () => {
       if (!isScene2Composing) {
         normalizeScene2Input();
       }
+      syncScene2Selection();
     });
 
     scene2SearchForm.addEventListener("submit", (event) => {
       event.preventDefault();
-      closeScene2Detail();
-      renderScene2Results(scene2SearchInput.value);
+      submitScene2Search();
     });
 
     scene2CloseButton.addEventListener("click", () => {
@@ -971,6 +1116,8 @@
     setStageSizeCssVars();
     ensureHotspots();
     preloadImages();
+    createScene2Keyboard();
+    updateScene2KeyboardVisibility();
     setScene2Active(false);
     renderScene2Results("");
     setProgress(CONFIG.progress[0].level, true);
@@ -979,7 +1126,10 @@
     setupFullscreenToggle();
     setupKeyboardForDevOnly();
 
-    window.addEventListener("resize", updateStageScale);
+    window.addEventListener("resize", () => {
+      updateStageScale();
+      updateScene2KeyboardVisibility();
+    });
 
     window.tabletApp = {
       setProgress,
