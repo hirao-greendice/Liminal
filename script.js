@@ -67,7 +67,7 @@
       { level: 6, focusImage: 6, visibleImages: [0, 1, 2, 3, 4, 5, 6, 100, 101, 102] },
       { level: 7, focusImage: 7, visibleImages: [0, 1, 2, 3, 4, 5, 6, 7, 100, 101, 102] },
       { level: 8, focusImage: 8, visibleImages: [0, 1, 2, 3, 4, 5, 6, 7, 8, 100, 101, 102] },
-      { level: 9, focusImage: 9, visibleImages: [0, 1, 2, 3, 4, 5, 6, 7, 9, 100, 101, 102] },
+      { level: 9, focusImage: 9, visibleImages: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 100, 101, 102] },
     ],
   };
 
@@ -204,27 +204,74 @@
   let isScene2Composing = false;
   let scene2SelectionStart = 0;
   let scene2SelectionEnd = 0;
+  let isScene2KeyboardCollapsed = false;
 
   const SCENE2_KEYBOARD_LAYOUT = [
-    ["\u30A2", "\u30A4", "\u30A6", "\u30A8", "\u30AA", "\u30E4", "\u30E6", "\u30E8", "\u30EF", "\u30F2"],
-    ["\u30AB", "\u30AD", "\u30AF", "\u30B1", "\u30B3", "\u30B5", "\u30B7", "\u30B9", "\u30BB", "\u30BD"],
-    ["\u30BF", "\u30C1", "\u30C4", "\u30C6", "\u30C8", "\u30CA", "\u30CB", "\u30CC", "\u30CD", "\u30CE"],
-    ["\u30CF", "\u30D2", "\u30D5", "\u30D8", "\u30DB", "\u30DE", "\u30DF", "\u30E0", "\u30E1", "\u30E2"],
-    ["\u30E9", "\u30EA", "\u30EB", "\u30EC", "\u30ED", "\u30F3", "\u30FC", "\u30C3", "\u30E3", "\u30E5"],
-    ["\u30AC", "\u30AE", "\u30B0", "\u30B2", "\u30B4", "\u30B6", "\u30B8", "\u30BA", "\u30BC", "\u30BE"],
-    ["\u30C0", "\u30C2", "\u30C5", "\u30C7", "\u30C9", "\u30D0", "\u30D3", "\u30D6", "\u30D9", "\u30DC"],
     [
-      "\u30D1",
-      "\u30D4",
-      "\u30D7",
-      "\u30DA",
-      "\u30DD",
-      "\u30E7",
-      { action: "delete", label: "DEL" },
       { action: "clear", label: "CLEAR" },
-      { action: "submit", label: "SEARCH" },
+      "\u30EF",
+      "\u30E9",
+      "\u30E4",
+      "\u30DE",
+      "\u30CF",
+      "\u30CA",
+      "\u30BF",
+      "\u30B5",
+      "\u30AB",
+      "\u30A2",
     ],
+    [{ action: "delete", label: "DEL" }, "\u30FC", "\u30EA", null, "\u30DF", "\u30D2", "\u30CB", "\u30C1", "\u30B7", "\u30AD", "\u30A4"],
+    [{ action: "dakuten", label: "\u309B" }, "\u30F2", "\u30EB", "\u30E6", "\u30E0", "\u30D5", "\u30CC", "\u30C4", "\u30B9", "\u30AF", "\u30A6"],
+    [{ action: "handakuten", label: "\u309C" }, "\u30F3", "\u30EC", null, "\u30E1", "\u30D8", "\u30CD", "\u30C6", "\u30BB", "\u30B1", "\u30A8"],
+    [{ action: "small", label: "\u5C0F" }, null, "\u30ED", "\u30E8", "\u30E2", "\u30DB", "\u30CE", "\u30C8", "\u30BD", "\u30B3", "\u30AA"],
   ];
+
+  const SCENE2_DAKUTEN_MAP = {
+    "\u30A6": "\u30F4",
+    "\u30AB": "\u30AC",
+    "\u30AD": "\u30AE",
+    "\u30AF": "\u30B0",
+    "\u30B1": "\u30B2",
+    "\u30B3": "\u30B4",
+    "\u30B5": "\u30B6",
+    "\u30B7": "\u30B8",
+    "\u30B9": "\u30BA",
+    "\u30BB": "\u30BC",
+    "\u30BD": "\u30BE",
+    "\u30BF": "\u30C0",
+    "\u30C1": "\u30C2",
+    "\u30C4": "\u30C5",
+    "\u30C6": "\u30C7",
+    "\u30C8": "\u30C9",
+    "\u30CF": "\u30D0",
+    "\u30D2": "\u30D3",
+    "\u30D5": "\u30D6",
+    "\u30D8": "\u30D9",
+    "\u30DB": "\u30DC",
+  };
+
+  const SCENE2_HANDAKUTEN_MAP = {
+    "\u30CF": "\u30D1",
+    "\u30D2": "\u30D4",
+    "\u30D5": "\u30D7",
+    "\u30D8": "\u30DA",
+    "\u30DB": "\u30DD",
+  };
+
+  const SCENE2_SMALL_MAP = {
+    "\u30A2": "\u30A1",
+    "\u30A4": "\u30A3",
+    "\u30A6": "\u30A5",
+    "\u30A8": "\u30A7",
+    "\u30AA": "\u30A9",
+    "\u30C4": "\u30C3",
+    "\u30E4": "\u30E3",
+    "\u30E6": "\u30E5",
+    "\u30E8": "\u30E7",
+    "\u30EF": "\u30EE",
+    "\u30AB": "\u30F5",
+    "\u30B1": "\u30F6",
+  };
 
   if (CONFIG.debugShowHotspots) {
     document.body.classList.add("debug-hotspots");
@@ -251,6 +298,7 @@
     document.body.classList.toggle("scene2-active", isActive);
     scene2Ui.hidden = !isActive;
     if (!isActive) {
+      setScene2KeyboardCollapsed(false);
       closeScene2Detail();
       scene2SearchInput.blur();
       return;
@@ -272,6 +320,7 @@
     scene2ResultsBody.replaceChildren();
 
     if (!normalizedQuery) {
+      setScene2KeyboardCollapsed(false);
       const resultText = document.createElement("p");
       resultText.textContent = "\u691c\u7d22\u7d50\u679c\u306f\u672a\u8a2d\u5b9a\u3067\u3059\u3002";
       scene2ResultsBody.appendChild(resultText);
@@ -280,11 +329,14 @@
 
     const results = SEARCH_INDEX[normalizedQuery];
     if (!results || results.length === 0) {
+      setScene2KeyboardCollapsed(false);
       const resultText = document.createElement("p");
       resultText.textContent = `\u300c${normalizedQuery}\u300d\u306e\u691c\u7d22\u7d50\u679c\u306f\u3042\u308a\u307e\u305b\u3093\u3002`;
       scene2ResultsBody.appendChild(resultText);
       return;
     }
+
+    setScene2KeyboardCollapsed(true);
 
     const list = document.createElement("div");
     list.className = "scene2-result-list";
@@ -382,6 +434,30 @@
     syncScene2Selection();
   }
 
+  function transformScene2Text(transformMap) {
+    let replaceStart = scene2SelectionStart;
+    let replaceEnd = scene2SelectionEnd;
+
+    if (replaceStart === replaceEnd) {
+      replaceStart = Math.max(0, replaceStart - 1);
+    }
+
+    if (replaceStart === replaceEnd || replaceEnd - replaceStart !== 1) {
+      return;
+    }
+
+    const source = scene2SearchInput.value.slice(replaceStart, replaceEnd);
+    const transformed = transformMap[source];
+    if (!transformed) {
+      return;
+    }
+
+    focusScene2SearchInput();
+    scene2SearchInput.setRangeText(transformed, replaceStart, replaceEnd, "end");
+    normalizeScene2Input();
+    syncScene2Selection();
+  }
+
   function deleteScene2TextBackward() {
     const hasSelection = scene2SelectionStart !== scene2SelectionEnd;
     const deleteStart = hasSelection
@@ -419,9 +495,20 @@
 
   function updateScene2KeyboardVisibility() {
     const isEnabled = shouldEnableScene2Keyboard();
+    const isVisible = isEnabled && !isScene2KeyboardCollapsed;
     document.body.classList.toggle("scene2-keyboard-enabled", isEnabled);
-    scene2Keyboard.hidden = !isEnabled;
-    scene2Keyboard.setAttribute("aria-hidden", String(!isEnabled));
+    document.body.classList.toggle("scene2-keyboard-visible", isVisible);
+    scene2Keyboard.hidden = !isVisible;
+    scene2Keyboard.setAttribute("aria-hidden", String(!isVisible));
+  }
+
+  function setScene2KeyboardCollapsed(isCollapsed) {
+    if (isScene2KeyboardCollapsed === isCollapsed) {
+      return;
+    }
+
+    isScene2KeyboardCollapsed = isCollapsed;
+    updateScene2KeyboardVisibility();
   }
 
   function handleScene2KeyboardPress(key) {
@@ -440,6 +527,21 @@
       return;
     }
 
+    if (key.action === "dakuten") {
+      transformScene2Text(SCENE2_DAKUTEN_MAP);
+      return;
+    }
+
+    if (key.action === "handakuten") {
+      transformScene2Text(SCENE2_HANDAKUTEN_MAP);
+      return;
+    }
+
+    if (key.action === "small") {
+      transformScene2Text(SCENE2_SMALL_MAP);
+      return;
+    }
+
     if (key.action === "submit") {
       submitScene2Search();
     }
@@ -450,6 +552,14 @@
 
     SCENE2_KEYBOARD_LAYOUT.forEach((row) => {
       row.forEach((key) => {
+        if (!key) {
+          const spacer = document.createElement("div");
+          spacer.className = "scene2-keyboard-spacer";
+          spacer.setAttribute("aria-hidden", "true");
+          fragment.appendChild(spacer);
+          return;
+        }
+
         const button = document.createElement("button");
         button.type = "button";
         button.className = "scene2-keyboard-key";
@@ -796,6 +906,12 @@
   function setupScene2Search() {
     ["focus", "click", "keyup", "select"].forEach((eventName) => {
       scene2SearchInput.addEventListener(eventName, syncScene2Selection);
+    });
+
+    scene2SearchInput.addEventListener("pointerdown", () => {
+      if (isScene2KeyboardCollapsed) {
+        setScene2KeyboardCollapsed(false);
+      }
     });
 
     scene2SearchInput.addEventListener("compositionstart", () => {

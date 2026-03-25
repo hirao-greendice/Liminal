@@ -103,7 +103,7 @@ body.scene2-active #hotspot-layer {
   gap: 28px;
 }
 
-body.scene2-keyboard-enabled .scene2-panel {
+body.scene2-keyboard-visible .scene2-panel {
   grid-template-rows: auto 1fr auto;
 }
 
@@ -270,37 +270,41 @@ body.scene2-keyboard-enabled .scene2-panel {
   display: none;
 }
 
-body.scene2-keyboard-enabled .scene2-keyboard {
+body.scene2-keyboard-visible .scene2-keyboard {
   display: grid;
-  grid-template-columns: repeat(10, minmax(0, 1fr));
-  gap: 8px;
+  grid-template-columns: repeat(11, minmax(0, 1fr));
+  gap: 10px;
   align-content: start;
 }
 
 .scene2-keyboard-key {
-  min-height: 38px;
+  min-height: 52px;
   border: 2px solid #dee1c6;
   background: #000;
   color: #dee1c6;
   font: inherit;
-  font-size: 24px;
+  font-size: 30px;
   line-height: 1;
   cursor: pointer;
   padding: 0;
 }
 
 .scene2-keyboard-key[data-action="delete"],
-.scene2-keyboard-key[data-action="clear"],
-.scene2-keyboard-key[data-action="submit"] {
+ .scene2-keyboard-key[data-action="clear"] {
   font-size: 18px;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.04em;
+  font-weight: 700;
 }
 
-.scene2-keyboard-key[data-action="submit"] {
-  grid-column: span 2;
-  background: #dee1c6;
-  color: #000;
-  font-weight: 700;
+.scene2-keyboard-key[data-action="dakuten"],
+.scene2-keyboard-key[data-action="handakuten"],
+.scene2-keyboard-key[data-action="small"] {
+  font-size: 26px;
+}
+
+.scene2-keyboard-spacer {
+  min-height: 52px;
+  pointer-events: none;
 }
 
 .scene2-keyboard-key:focus {
