@@ -83,13 +83,13 @@
   ハシ: [
     {
       label: "箸 小部屋B",
-      detail: `場所:level2の小部屋Bの箱の中
+      detail: `場所:level2の小部屋Cの箱の中
 大きさ:15cm
 重さ:100g`,
     },
     {
       label: "箸 小部屋B",
-      detail: `場所:level2の小部屋Bの箱の中
+      detail: `場所:level2の小部屋Cの箱の中
 大きさ:15cm
 重さ:100g`,
     },
@@ -127,7 +127,7 @@
   キンカ: [
     {
       label: "キンカ 小部屋B",
-      detail: `場所:level2の小部屋Bの机の下
+      detail: `場所:level2の小部屋Cの机の下
 大きさ:30cm
 重さ:300g`,
     },
