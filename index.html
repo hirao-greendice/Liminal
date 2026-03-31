@@ -19,28 +19,55 @@
         ></button>
         <section id="scene2-ui" aria-label="Search scene">
           <div class="scene2-panel">
-            <form id="scene2-search-form" class="scene2-search-row">
-              <input
-                id="scene2-search-input"
-                class="scene2-search-input"
-                type="text"
-                name="query"
-                lang="ja"
-                inputmode="text"
-                placeholder="検索ワードを入力"
-                autocomplete="off"
-                autocapitalize="off"
-                autocorrect="off"
-                spellcheck="false"
-              />
-              <button id="scene2-search-button" class="scene2-search-button" type="submit">SEARCH</button>
-              <button id="scene2-close-button" class="scene2-close-button" type="button" aria-label="シーン1に戻る">×</button>
-            </form>
-            <section id="scene2-results" class="scene2-results" aria-live="polite">
-              <div id="scene2-results-body" class="scene2-results-body">
-                <p>検索結果は未設定です。</p>
+            <section id="scene2-gate" class="scene2-gate" hidden aria-live="polite">
+              <div class="scene2-gate-head">
+                <div class="scene2-gate-spacer" aria-hidden="true"></div>
+                <h2 class="scene2-gate-title">SEARCH</h2>
+                <button id="scene2-gate-close-button" class="scene2-close-button" type="button" aria-label="シーン1に戻る">×</button>
               </div>
+              <p class="scene2-gate-text">検索機能を使用するには、現在のLevelの答えを入力してください</p>
+              <form id="scene2-gate-form" class="scene2-gate-row">
+                <input
+                  id="scene2-gate-input"
+                  class="scene2-search-input scene2-gate-input"
+                  type="text"
+                  name="unlock-answer"
+                  lang="ja"
+                  inputmode="text"
+                  placeholder="答えを入力"
+                  autocomplete="off"
+                  autocapitalize="off"
+                  autocorrect="off"
+                  spellcheck="false"
+                />
+                <button id="scene2-gate-button" class="scene2-search-button scene2-gate-button" type="submit">Enter</button>
+              </form>
+              <p id="scene2-gate-feedback" class="scene2-gate-feedback" aria-live="polite"></p>
             </section>
+            <div id="scene2-search-shell" class="scene2-search-shell">
+              <form id="scene2-search-form" class="scene2-search-row">
+                <input
+                  id="scene2-search-input"
+                  class="scene2-search-input"
+                  type="text"
+                  name="query"
+                  lang="ja"
+                  inputmode="text"
+                  placeholder="検索ワードを入力"
+                  autocomplete="off"
+                  autocapitalize="off"
+                  autocorrect="off"
+                  spellcheck="false"
+                />
+                <button id="scene2-search-button" class="scene2-search-button" type="submit">SEARCH</button>
+                <button id="scene2-close-button" class="scene2-close-button" type="button" aria-label="シーン1に戻る">×</button>
+              </form>
+              <section id="scene2-results" class="scene2-results" aria-live="polite">
+                <div id="scene2-results-body" class="scene2-results-body">
+                  <p>検索結果は未設定です。</p>
+                </div>
+              </section>
+            </div>
             <section id="scene2-keyboard" class="scene2-keyboard" aria-label="Virtual keyboard"></section>
             <section id="scene2-detail-modal" class="scene2-detail-modal" aria-hidden="true">
               <div class="scene2-detail-card" role="dialog" aria-modal="true" aria-label="検索結果詳細">
@@ -56,6 +83,13 @@
               </div>
             </section>
           </div>
+        </section>
+        <section id="scene3-ui" aria-label="Report scene" hidden>
+          <div class="scene3-report-toolbar">
+            <div id="scene3-report-tabs" class="scene3-report-tabs" role="tablist" aria-label="Report switcher"></div>
+          </div>
+          <div id="scene3-field-layer" class="scene3-field-layer" aria-live="polite"></div>
+          <section id="scene3-keyboard" class="scene3-keyboard" aria-label="Report kana keyboard" hidden></section>
         </section>
         <div id="hotspot-layer" aria-hidden="true"></div>
       </section>

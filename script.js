@@ -25,10 +25,189 @@
     sceneScreens: {
       scene2: {},
       scene3: {
-        defaultView: "scene3_300",
-        views: {
-          scene3_300: { image: "image/300.webp" },
-          scene3_301: { image: "image/301.webp" },
+        defaultReport: "report_hiyoko",
+        reports: {
+          report_hiyoko: {
+            id: "report_hiyoko",
+            title: "ヒヨコについて",
+            switchLabel: "01",
+            image: "image/300.webp",
+            fields: [
+              { id: "a_1", type: "kana", x: 560, y: 342, w: 100, h: 38, maxLength: 4, correct: "ヒヨコ" },
+              { id: "b_1", type: "kana", x: 780, y: 342, w: 150, h: 38, maxLength: 6, correct: "ハンヒヨコ" },
+              { id: "c_1", type: "kana", x: 380, y: 370, w: 122, h: 38, maxLength: 4, correct: "ダイヤ" },
+              { id: "a_2", type: "kana", x: 590, y: 372, w: 122, h: 38, maxLength: 4, correct: "ヒヨコ" },
+              { id: "d_1", type: "kana", x: 710, y: 470, w: 118, h: 38, maxLength: 4, correct: "ナゾ" },
+              { id: "e_1", type: "kana", x: 910, y: 505, w:120, h: 38, maxLength: 3, correct: "コベヤ" },
+              { id: "f_1", type: "kana", x: 674, y: 536, w: 120, h: 38, maxLength: 4, correct: "ハンテン" },
+              { id: "g_1", type: "kana", x: 813, y: 536, w: 160, h: 38, maxLength: 6, correct: "ハンブッタイ" },
+              { id: "c_2", type: "kana", x: 476, y: 565, w: 122, h: 38, maxLength: 4, correct: "ダイヤ" },
+              { id: "a_3", type: "kana", x: 650, y: 570, w: 122, h: 38, maxLength: 4, correct: "ヒヨコ" },
+              {
+                id: "h_1",
+                type: "select",
+                x: 900,
+                y: 570,
+                w: 178,
+                h: 38,
+                placeholder: "選択",
+                options: ["している", "していない"],
+                correct: "している",
+              },
+              { id: "g_2", type: "kana", x: 670, y: 670, w: 160, h: 38, maxLength: 6, correct: "ハンブッタイ" },
+            ],
+          },
+
+
+
+          report_transfer: {
+            id: "report_transfer",
+            title: "空間移動について",
+            switchLabel: "02",
+            image: "image/301.webp",
+            fields: [
+              { id: "a_1", type: "kana", x: 499, y: 246, w: 120, h: 38, maxLength: 4, correct: "イス" },
+              { id: "a_2", type: "kana", x: 740, y: 246, w: 120, h: 38, maxLength: 4, correct: "イス" },
+              { id: "b_1", type: "kana", x: 510, y: 275, w: 120, h: 38, maxLength: 4, correct: "ハンペン" },
+              { id: "b_2", type: "kana", x: 763, y: 275, w: 120, h: 38, maxLength: 4, correct: "ハンペン" },
+              { id: "c_1", type: "kana", x: 510, y: 305, w: 120, h: 38, maxLength: 4, correct: "ハシ" },
+              { id: "c_2", type: "kana", x: 742, y: 305, w: 120, h: 38, maxLength: 4, correct: "ハシ" },
+              {
+                id: "d_1",
+                type: "select",
+                x: 571,
+                y: 335,
+                w: 83,
+                h: 38,
+                placeholder: "数",
+                options: ["1", "2", "3", "4", "5", "6"],
+                correct: "1",
+              },
+              {
+                id: "e_1",
+                type: "select",
+                x: 740,
+                y: 335,
+                w: 78,
+                h: 38,
+                placeholder: "数",
+                options: ["1", "2", "3", "4", "5", "6"],
+                correct: "2",
+              },
+              { id: "f_1", type: "kana", x: 570, y: 377  , w: 120, h: 38, maxLength: 4, correct: "ヒヨコ" },
+              { id: "f_2", type: "kana", x: 460, y: 410  , w: 120, h: 38, maxLength: 4, correct: "ヒヨコ" },
+              {
+                id: "g_1",
+                type: "select",
+                x: 906,
+                y: 408,
+                w: 82,
+                h: 38,
+                placeholder: "数",
+                options: ["0", "1", "2", "3", "4", "5", "6"],
+                correct: "3",
+              },
+              { id: "h_1", type: "kana", x: 755, y:470, w: 135, h: 38, maxLength: 5, fontSize: 20, correct: "ハンヒヨコ" },
+              { id: "h_2", type: "kana", x: 345, y:500, w: 135, h: 38, maxLength: 5, fontSize: 20, correct: "ハンヒヨコ" },
+              
+              {
+                id: "i_1",
+                type: "select",
+                x: 881,
+                y: 530,
+                w: 105,
+                h: 38,
+                placeholder: "選択",
+                options: ["進む", "戻る"],
+                correct: "戻る",
+              },
+              {
+                id: "j_1",
+                type: "select",
+                x: 710,
+                y: 609,
+                w: 105,
+                h: 38,
+                placeholder: "選択",
+                options: ["進む", "戻る"],
+                correct: "進む",
+              },
+              {
+                id: "i_2",
+                type: "select",
+                x: 770,
+                y: 635,
+                w: 105,
+                h: 38,
+                placeholder: "選択",
+                options: ["進む", "戻る"],
+                correct: "戻る",
+              },
+              {
+                id: "g_2",
+                type: "select",
+                x: 460,
+                y: 680,
+                w: 82,
+                h: 38,
+                placeholder: "数",
+                options: ["1", "2", "3","4", "5"],
+                correct: "3",
+              },
+              {
+                id: "k_1",
+                type: "select",
+                x: 539,
+                y: 707,
+                w: 97,
+                h: 38,
+                placeholder: "数",
+                options: ["1", "2", "3", "4", "5", "6", "7", "8", "9"],
+                correct: "2",
+              },
+            ],
+          },
+          report_draft: {
+            id: "report_draft",
+            title: "空間移動について②",
+            switchLabel: "03",
+            image: "image/302.webp",
+            fields: [
+              { id: "a_1", type: "kana", x: 542, y: 286, w: 101, h: 38, maxLength: 6, correct: "" },
+              { id: "b_1", type: "kana", x: 850, y: 286, w: 68, h: 38, maxLength: 3, fontSize: 20, characterSet: "number", correct: "" },
+              { id: "c_1", type: "kana", x: 1025, y: 286, w: 72, h: 38, maxLength: 3, fontSize: 20, characterSet: "number", correct: "" },
+              { id: "d_1", type: "kana", x: 669, y: 375, w: 101, h: 38, maxLength: 6, correct: "" },
+              {
+                id: "e_1",
+                type: "select",
+                x: 413,
+                y: 434,
+                w: 102,
+                h: 38,
+                options: ["＋", "✕"],
+                correct: "",
+              },
+              { id: "f_1", type: "kana", x: 1012, y: 432, w: 91, h: 38, maxLength: 6, fontSize: 20, correct: "" },
+              {
+                id: "g_1",
+                type: "select",
+                x: 413,
+                y: 464,
+                w: 102,
+                h: 38,
+                options: ["＋", "✕"],
+                correct: "",
+              },
+              { id: "h_1", type: "kana", x: 1012, y: 463, w: 91, h: 38, maxLength: 6, fontSize: 20, correct: "" },
+              { id: "i_1", type: "kana", x: 719, y: 522, w: 100, h: 38, maxLength: 3, fontSize: 20, characterSet: "number", correct: "" },
+              { id: "j_1", type: "kana", x: 624, y: 610, w: 118, h: 38, maxLength: 8, correct: "" },
+              { id: "i_2", type: "kana", x: 888, y: 610, w: 66, h: 38, maxLength: 3, fontSize: 20, characterSet: "number", correct: "" },
+              { id: "k_1", type: "kana", x: 508, y: 640, w: 68, h: 38, maxLength: 3, fontSize: 20, characterSet: "number", correct: "" },
+              { id: "k_2", type: "kana", x: 385, y: 669, w: 68, h: 38, maxLength: 3, fontSize: 20, characterSet: "number", correct: "" },
+              { id: "i_3", type: "kana", x: 842, y: 669, w: 68, h: 38, maxLength: 3, fontSize: 20, characterSet: "number", correct: "" },
+              { id: "l_1", type: "kana", x: 397, y: 699, w: 128, h: 38, maxLength: 8, correct: "" },
+            ],
+          },
         },
       },
     },
@@ -37,8 +216,6 @@
       button100: { targetScene: "scene1", x: 70, y: 100, w: 400, h: 80 },
       button101: { targetScene: "scene2", x: 460, y: 100, w: 400, h: 80 },
       button102: { targetScene: "scene3", x: 850, y: 100, w: 400, h: 80 },
-      button300: { targetScene3View: "scene3_300", x: 70, y: 290, w: 200, h: 200 },
-      button301: { targetScene3View: "scene3_301", x: 70, y: 500, w: 200, h: 200 },
       progressPrev: { x: 0, y: 0, w: 140, h: 110 },
       progressNext: { x: 1140, y: 0, w: 140, h: 110 },
       img0: { target: "img0", x: 80, y: 280, w: 200, h: 40 },
@@ -203,6 +380,13 @@
   const imageEl = document.getElementById("screen-image");
   const fullscreenToggle = document.getElementById("fullscreen-toggle");
   const scene2Ui = document.getElementById("scene2-ui");
+  const scene2Gate = document.getElementById("scene2-gate");
+  const scene2GateForm = document.getElementById("scene2-gate-form");
+  const scene2GateInput = document.getElementById("scene2-gate-input");
+  const scene2GateButton = document.getElementById("scene2-gate-button");
+  const scene2GateFeedback = document.getElementById("scene2-gate-feedback");
+  const scene2GateCloseButton = document.getElementById("scene2-gate-close-button");
+  const scene2SearchShell = document.getElementById("scene2-search-shell");
   const scene2CloseButton = document.getElementById("scene2-close-button");
   const scene2SearchForm = document.getElementById("scene2-search-form");
   const scene2SearchInput = document.getElementById("scene2-search-input");
@@ -211,6 +395,10 @@
   const scene2DetailModal = document.getElementById("scene2-detail-modal");
   const scene2DetailBody = document.getElementById("scene2-detail-body");
   const scene2DetailClose = document.getElementById("scene2-detail-close");
+  const scene3Ui = document.getElementById("scene3-ui");
+  const scene3ReportTabs = document.getElementById("scene3-report-tabs");
+  const scene3FieldLayer = document.getElementById("scene3-field-layer");
+  const scene3Keyboard = document.getElementById("scene3-keyboard");
   const hotspotLayer = document.getElementById("hotspot-layer");
 
   const screenMap = Object.fromEntries(CONFIG.screens.map((screen) => [screen.id, screen]));
@@ -218,15 +406,27 @@
   const progressMap = new Map(CONFIG.progress.map((rule) => [rule.level, rule]));
   const buttonIds = Object.keys(CONFIG.buttons);
   const hotspotElements = new Map();
+  const APP_STORAGE_KEY = "liminal-tablet-state-v1";
 
   let currentScene = "scene1";
-  let currentScene3View = CONFIG.sceneScreens.scene3.defaultView;
+  let currentScene3Report = CONFIG.sceneScreens.scene3.defaultReport;
   let currentProgress = CONFIG.progress[0].level;
   let currentScreen = imageToScreenId.get(CONFIG.progress[0].focusImage) || CONFIG.screens[0].id;
+  let isScene2Unlocked = false;
+  let scene2UnlockedProgress = {};
+  let scene2GateFeedbackMessage = "";
   let isScene2Composing = false;
   let scene2SelectionStart = 0;
   let scene2SelectionEnd = 0;
   let isScene2KeyboardCollapsed = false;
+  let activeScene3KanaFieldId = null;
+
+  const scene3Answers = Object.fromEntries(
+    Object.entries(CONFIG.sceneScreens.scene3.reports).map(([reportId, report]) => [
+      reportId,
+      Object.fromEntries(report.fields.map((field) => [field.id, ""])),
+    ])
+  );
 
   const SCENE2_KEYBOARD_LAYOUT = [
     [
@@ -246,6 +446,10 @@
     [{ action: "dakuten", label: "\u309B" }, "\u30F2", "\u30EB", "\u30E6", "\u30E0", "\u30D5", "\u30CC", "\u30C4", "\u30B9", "\u30AF", "\u30A6"],
     [{ action: "handakuten", label: "\u309C" }, "\u30F3", "\u30EC", null, "\u30E1", "\u30D8", "\u30CD", "\u30C6", "\u30BB", "\u30B1", "\u30A8"],
     [{ action: "small", label: "\u5C0F" }, null, "\u30ED", "\u30E8", "\u30E2", "\u30DB", "\u30CE", "\u30C8", "\u30BD", "\u30B3", "\u30AA"],
+  ];
+  const SCENE3_KEYBOARD_LAYOUT = [
+    ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "－"],
+    ...SCENE2_KEYBOARD_LAYOUT,
   ];
 
   const SCENE2_DAKUTEN_MAP = {
@@ -295,8 +499,154 @@
     "\u30B1": "\u30F6",
   };
 
+  const SCENE2_UNLOCK_ANSWERS = new Set(["イス", "ハンペン", "ハシ", "ヒヨコ", "クシ"]);
+  const SCENE2_GATE_PROGRESS_LEVELS = new Set([2, 3, 4, 5, 7, 8]);
+
   if (CONFIG.debugShowHotspots) {
     document.body.classList.add("debug-hotspots");
+  }
+
+  function canUseStorage() {
+    return typeof window !== "undefined" && typeof window.localStorage !== "undefined";
+  }
+
+  function saveAppState() {
+    if (!canUseStorage()) {
+      return;
+    }
+
+    const payload = {
+      currentScene,
+      currentScene3Report,
+      currentProgress,
+      currentScreen,
+      scene2Unlocked: isScene2Unlocked,
+      scene2UnlockedProgress,
+      scene2Query: scene2SearchInput.value,
+      scene2UnlockQuery: scene2GateInput.value,
+      scene3Answers,
+    };
+
+    try {
+      window.localStorage.setItem(APP_STORAGE_KEY, JSON.stringify(payload));
+    } catch (error) {
+      console.warn("Failed to persist app state.", error);
+    }
+  }
+
+  function restoreScene3Answers(savedAnswers) {
+    if (!savedAnswers || typeof savedAnswers !== "object") {
+      return;
+    }
+
+    Object.entries(CONFIG.sceneScreens.scene3.reports).forEach(([reportId, report]) => {
+      const savedReportAnswers = savedAnswers[reportId];
+      if (!savedReportAnswers || typeof savedReportAnswers !== "object") {
+        return;
+      }
+
+      report.fields.forEach((field) => {
+        if (!(field.id in savedReportAnswers)) {
+          return;
+        }
+
+        scene3Answers[reportId][field.id] = normalizeScene3FieldValue(field, savedReportAnswers[field.id]);
+      });
+    });
+  }
+
+  function loadAppState() {
+    if (!canUseStorage()) {
+      return;
+    }
+
+    try {
+      const raw = window.localStorage.getItem(APP_STORAGE_KEY);
+      if (!raw) {
+        return;
+      }
+
+      const payload = JSON.parse(raw);
+      if (!payload || typeof payload !== "object") {
+        return;
+      }
+
+      if (progressMap.has(payload.currentProgress)) {
+        currentProgress = payload.currentProgress;
+      }
+
+      if (typeof payload.currentScreen === "string" && screenMap[payload.currentScreen]) {
+        currentScreen = payload.currentScreen;
+      }
+
+      if (typeof payload.currentScene3Report === "string"
+        && CONFIG.sceneScreens.scene3.reports[payload.currentScene3Report]) {
+        currentScene3Report = payload.currentScene3Report;
+      }
+
+      if (payload.currentScene === "scene1" || payload.currentScene === "scene2" || payload.currentScene === "scene3") {
+        currentScene = payload.currentScene;
+      }
+
+      if (typeof payload.scene2Query === "string") {
+        scene2SearchInput.value = payload.scene2Query;
+      }
+
+      if (typeof payload.scene2UnlockQuery === "string") {
+        scene2GateInput.value = payload.scene2UnlockQuery;
+      }
+
+      if (payload.scene2UnlockedProgress && typeof payload.scene2UnlockedProgress === "object") {
+        scene2UnlockedProgress = Object.fromEntries(
+          Object.entries(payload.scene2UnlockedProgress).map(([key, value]) => [key, Boolean(value)])
+        );
+      } else if (payload.scene2Unlocked && progressMap.has(payload.currentProgress)) {
+        scene2UnlockedProgress[String(payload.currentProgress)] = true;
+      }
+
+      restoreScene3Answers(payload.scene3Answers);
+    } catch (error) {
+      console.warn("Failed to restore app state.", error);
+    }
+  }
+
+  function requiresScene2Unlock(progress = currentProgress) {
+    return SCENE2_GATE_PROGRESS_LEVELS.has(progress);
+  }
+
+  function syncScene2UnlockState({ resetInput = false } = {}) {
+    if (!requiresScene2Unlock()) {
+      isScene2Unlocked = true;
+      scene2GateFeedbackMessage = "";
+      return;
+    }
+
+    isScene2Unlocked = Boolean(scene2UnlockedProgress[String(currentProgress)]);
+    if (isScene2Unlocked) {
+      scene2GateFeedbackMessage = "検索機能を解放しました。";
+      return;
+    }
+
+    if (resetInput) {
+      scene2GateInput.value = "";
+    }
+    scene2GateFeedbackMessage = "";
+  }
+
+  function getActiveScene2Input() {
+    return isScene2Unlocked ? scene2SearchInput : scene2GateInput;
+  }
+
+  function updateScene2GateFeedback() {
+    scene2GateFeedback.textContent = scene2GateFeedbackMessage;
+    scene2GateFeedback.classList.toggle("is-success", scene2GateFeedbackMessage === "検索機能を解放しました。");
+  }
+
+  function updateScene2Mode() {
+    document.body.classList.toggle("scene2-locked", !isScene2Unlocked);
+    scene2Gate.hidden = isScene2Unlocked;
+    scene2SearchShell.hidden = !isScene2Unlocked;
+    updateScene2GateFeedback();
   }
 
   function setStageSizeCssVars() {
@@ -323,15 +673,19 @@
       setScene2KeyboardCollapsed(false);
       closeScene2Detail();
       scene2SearchInput.blur();
+      scene2GateInput.blur();
       return;
     }
+
+    syncScene2UnlockState();
+    updateScene2Mode();
 
     if (!document.body.classList.contains("scene2-keyboard-enabled")) {
       return;
     }
 
     requestAnimationFrame(() => {
-      scene2SearchInput.focus({ preventScroll: true });
+      getActiveScene2Input().focus({ preventScroll: true });
       syncScene2Selection();
     });
   }
@@ -428,32 +782,36 @@
     );
   }
 
-  function normalizeScene2Input() {
-    const converted = toKatakana(scene2SearchInput.value)
+  function normalizeScene2Input(targetInput = getActiveScene2Input()) {
+    const converted = toKatakana(targetInput.value)
       .replace(/\s+/g, "")
       .replace(/[^\u30A1-\u30FA\u30FC\u30FD\u30FE]/g, "");
-    if (scene2SearchInput.value !== converted) {
-      const caret = scene2SearchInput.selectionStart ?? converted.length;
-      scene2SearchInput.value = converted;
-      scene2SearchInput.setSelectionRange(caret, caret);
+    if (targetInput.value !== converted) {
+      const caret = targetInput.selectionStart ?? converted.length;
+      targetInput.value = converted;
+      targetInput.setSelectionRange(caret, caret);
     }
   }
 
   function syncScene2Selection() {
-    scene2SelectionStart = scene2SearchInput.selectionStart ?? scene2SearchInput.value.length;
-    scene2SelectionEnd = scene2SearchInput.selectionEnd ?? scene2SelectionStart;
+    const activeInput = getActiveScene2Input();
+    scene2SelectionStart = activeInput.selectionStart ?? activeInput.value.length;
+    scene2SelectionEnd = activeInput.selectionEnd ?? scene2SelectionStart;
   }
 
   function focusScene2SearchInput() {
-    scene2SearchInput.focus({ preventScroll: true });
-    scene2SearchInput.setSelectionRange(scene2SelectionStart, scene2SelectionEnd);
+    const activeInput = getActiveScene2Input();
+    activeInput.focus({ preventScroll: true });
+    activeInput.setSelectionRange(scene2SelectionStart, scene2SelectionEnd);
   }
 
   function insertScene2Text(value) {
+    const activeInput = getActiveScene2Input();
     focusScene2SearchInput();
-    scene2SearchInput.setRangeText(value, scene2SelectionStart, scene2SelectionEnd, "end");
-    normalizeScene2Input();
+    activeInput.setRangeText(value, scene2SelectionStart, scene2SelectionEnd, "end");
+    normalizeScene2Input(activeInput);
     syncScene2Selection();
+    saveAppState();
   }
 
   function transformScene2Text(transformMap) {
@@ -468,16 +826,18 @@
       return;
     }
 
-    const source = scene2SearchInput.value.slice(replaceStart, replaceEnd);
+    const activeInput = getActiveScene2Input();
+    const source = activeInput.value.slice(replaceStart, replaceEnd);
     const transformed = transformMap[source];
     if (!transformed) {
       return;
     }
 
     focusScene2SearchInput();
-    scene2SearchInput.setRangeText(transformed, replaceStart, replaceEnd, "end");
-    normalizeScene2Input();
+    activeInput.setRangeText(transformed, replaceStart, replaceEnd, "end");
+    normalizeScene2Input(activeInput);
     syncScene2Selection();
+    saveAppState();
   }
 
   function deleteScene2TextBackward() {
@@ -490,22 +850,58 @@
       return;
     }
 
+    const activeInput = getActiveScene2Input();
     focusScene2SearchInput();
-    scene2SearchInput.setRangeText("", deleteStart, deleteEnd, "end");
-    normalizeScene2Input();
+    activeInput.setRangeText("", deleteStart, deleteEnd, "end");
+    normalizeScene2Input(activeInput);
     syncScene2Selection();
+    saveAppState();
   }
 
   function clearScene2Input() {
-    scene2SearchInput.value = "";
+    const activeInput = getActiveScene2Input();
+    activeInput.value = "";
     scene2SelectionStart = 0;
     scene2SelectionEnd = 0;
     focusScene2SearchInput();
+    saveAppState();
   }
 
   function submitScene2Search() {
     closeScene2Detail();
     renderScene2Results(scene2SearchInput.value);
+    saveAppState();
+  }
+
+  function submitScene2Unlock() {
+    normalizeScene2Input(scene2GateInput);
+    syncScene2Selection();
+
+    const answer = scene2GateInput.value.trim();
+    if (!answer) {
+      scene2GateFeedbackMessage = "答えを入力してください。";
+      updateScene2GateFeedback();
+      saveAppState();
+      return;
+    }
+
+    if (!SCENE2_UNLOCK_ANSWERS.has(answer)) {
+      scene2GateFeedbackMessage = `「${answer}」では解放できません。`;
+      updateScene2GateFeedback();
+      saveAppState();
+      return;
+    }
+
+    scene2UnlockedProgress[String(currentProgress)] = true;
+    syncScene2UnlockState();
+    updateScene2Mode();
+    renderScene2Results(scene2SearchInput.value);
+    saveAppState();
+
+    requestAnimationFrame(() => {
+      scene2SearchInput.focus({ preventScroll: true });
+      syncScene2Selection();
+    });
   }
 
   function shouldEnableScene2Keyboard() {
@@ -569,10 +965,10 @@
     }
   }
 
-  function createScene2Keyboard() {
+  function createKanaKeyboard(target, onPress, layout = SCENE2_KEYBOARD_LAYOUT) {
     const fragment = document.createDocumentFragment();
 
-    SCENE2_KEYBOARD_LAYOUT.forEach((row) => {
+    layout.forEach((row) => {
       row.forEach((key) => {
         if (!key) {
           const spacer = document.createElement("div");
@@ -593,13 +989,378 @@
           event.preventDefault();
         });
         button.addEventListener("click", () => {
-          handleScene2KeyboardPress(key);
+          onPress(key);
         });
         fragment.appendChild(button);
       });
     });
 
-    scene2Keyboard.replaceChildren(fragment);
+    target.replaceChildren(fragment);
+  }
+
+  function createScene2Keyboard() {
+    createKanaKeyboard(scene2Keyboard, handleScene2KeyboardPress);
+  }
+
+  function createScene3Keyboard() {
+    createKanaKeyboard(scene3Keyboard, handleScene3KeyboardPress, SCENE3_KEYBOARD_LAYOUT);
+  }
+
+  function getCurrentScene3Report() {
+    return CONFIG.sceneScreens.scene3.reports[currentScene3Report]
+      || CONFIG.sceneScreens.scene3.reports[CONFIG.sceneScreens.scene3.defaultReport];
+  }
+
+  function getScene3FieldValue(reportId, fieldId) {
+    return scene3Answers[reportId]?.[fieldId] ?? "";
+  }
+
+  function normalizeScene3FieldValue(field, value) {
+    if (field.type === "select") {
+      return String(value ?? "");
+    }
+
+    const converted = toKatakana(String(value ?? ""))
+      .replace(/\s+/g, "");
+
+    if (field.characterSet === "number") {
+      return converted
+        .replace(/[^0-9-－]/g, "")
+        .slice(0, field.maxLength || 32);
+    }
+
+    if (field.characterSet === "kana-number") {
+      return converted
+        .replace(/[^\u30A1-\u30FA\u30FC\u30FD\u30FE0-9-－]/g, "")
+        .slice(0, field.maxLength || 32);
+    }
+
+    return converted
+        .replace(/[^\u30A1-\u30FA\u30FC\u30FD\u30FE]/g, "")
+        .slice(0, field.maxLength || 32);
+  }
+
+  function getScene3FieldSyncKey(field) {
+    if (typeof field.syncKey === "string" && field.syncKey) {
+      return field.syncKey;
+    }
+
+    const match = /^([a-z]+)_\d+$/i.exec(field.id);
+    return match ? match[1].toLowerCase() : null;
+  }
+
+  function getScene3SyncedFields(reportId, field) {
+    const report = CONFIG.sceneScreens.scene3.reports[reportId];
+    if (!report) {
+      return [field];
+    }
+
+    const syncKey = getScene3FieldSyncKey(field);
+    if (!syncKey) {
+      return [field];
+    }
+
+    return report.fields.filter((entry) => getScene3FieldSyncKey(entry) === syncKey);
+  }
+
+  function setScene3FieldValue(reportId, field, nextValue) {
+    getScene3SyncedFields(reportId, field).forEach((entry) => {
+      scene3Answers[reportId][entry.id] = normalizeScene3FieldValue(entry, nextValue);
+    });
+    saveAppState();
+  }
+
+  function getScene3FieldCorrectValues(field) {
+    if (Array.isArray(field.correctValues)) {
+      return field.correctValues;
+    }
+
+    if (typeof field.correct === "string" || typeof field.correct === "number") {
+      return [String(field.correct)];
+    }
+
+    return [];
+  }
+
+  function isScene3FieldCorrect(field, value) {
+    if (!value) {
+      return false;
+    }
+
+    const correctValues = getScene3FieldCorrectValues(field);
+    if (correctValues.length === 0) {
+      return false;
+    }
+
+    const normalizedValue = normalizeScene3FieldValue(field, value);
+    return correctValues.some((candidate) => (
+      normalizeScene3FieldValue(field, candidate) === normalizedValue
+    ));
+  }
+
+  function setScene3KeyboardVisible(isVisible) {
+    const nextVisible = Boolean(isVisible && activeScene3KanaFieldId);
+    document.body.classList.toggle("scene3-keyboard-visible", nextVisible);
+    scene3Keyboard.hidden = !nextVisible;
+    scene3Keyboard.setAttribute("aria-hidden", String(!nextVisible));
+  }
+
+  function clearScene3ActiveField() {
+    activeScene3KanaFieldId = null;
+    setScene3KeyboardVisible(false);
+  }
+
+  function setScene3Active(isActive) {
+    document.body.classList.toggle("scene3-active", isActive);
+    scene3Ui.hidden = !isActive;
+    if (!isActive) {
+      clearScene3ActiveField();
+      scene3FieldLayer.replaceChildren();
+      scene3ReportTabs.replaceChildren();
+    }
+  }
+
+  function toggleScene3KanaField(fieldId) {
+    activeScene3KanaFieldId = activeScene3KanaFieldId === fieldId ? null : fieldId;
+    setScene3KeyboardVisible(Boolean(activeScene3KanaFieldId));
+    renderScene3Report();
+  }
+
+  function appendScene3KanaText(value) {
+    const report = getCurrentScene3Report();
+    const field = report.fields.find((entry) => entry.id === activeScene3KanaFieldId);
+    if (!field) {
+      return;
+    }
+
+    const currentValue = getScene3FieldValue(report.id, field.id);
+    setScene3FieldValue(report.id, field, `${currentValue}${value}`);
+    renderScene3Report();
+  }
+
+  function transformScene3KanaText(transformMap) {
+    const report = getCurrentScene3Report();
+    const field = report.fields.find((entry) => entry.id === activeScene3KanaFieldId);
+    if (!field) {
+      return;
+    }
+
+    const currentValue = getScene3FieldValue(report.id, field.id);
+    const source = currentValue.slice(-1);
+    const transformed = transformMap[source];
+    if (!transformed) {
+      return;
+    }
+
+    setScene3FieldValue(report.id, field, `${currentValue.slice(0, -1)}${transformed}`);
+    renderScene3Report();
+  }
+
+  function deleteScene3KanaTextBackward() {
+    const report = getCurrentScene3Report();
+    const field = report.fields.find((entry) => entry.id === activeScene3KanaFieldId);
+    if (!field) {
+      return;
+    }
+
+    const currentValue = getScene3FieldValue(report.id, field.id);
+    if (!currentValue) {
+      return;
+    }
+
+    setScene3FieldValue(report.id, field, currentValue.slice(0, -1));
+    renderScene3Report();
+  }
+
+  function clearScene3KanaText() {
+    const report = getCurrentScene3Report();
+    const field = report.fields.find((entry) => entry.id === activeScene3KanaFieldId);
+    if (!field) {
+      return;
+    }
+
+    setScene3FieldValue(report.id, field, "");
+    renderScene3Report();
+  }
+
+  function handleScene3KeyboardPress(key) {
+    if (!activeScene3KanaFieldId) {
+      return;
+    }
+
+    if (typeof key === "string") {
+      appendScene3KanaText(key);
+      return;
+    }
+
+    if (key.action === "delete") {
+      deleteScene3KanaTextBackward();
+      return;
+    }
+
+    if (key.action === "clear") {
+      clearScene3KanaText();
+      return;
+    }
+
+    if (key.action === "dakuten") {
+      transformScene3KanaText(SCENE2_DAKUTEN_MAP);
+      return;
+    }
+
+    if (key.action === "handakuten") {
+      transformScene3KanaText(SCENE2_HANDAKUTEN_MAP);
+      return;
+    }
+
+    if (key.action === "small") {
+      transformScene3KanaText(SCENE2_SMALL_MAP);
+    }
+  }
+
+  function createScene3OverlayCard(report) {
+    if (!report.overlayCard) {
+      return null;
+    }
+
+    const card = document.createElement("section");
+    card.className = "scene3-report-card";
+    card.style.left = `${report.overlayCard.x}px`;
+    card.style.top = `${report.overlayCard.y}px`;
+    card.style.width = `${report.overlayCard.w}px`;
+    card.style.height = `${report.overlayCard.h}px`;
+
+    const title = document.createElement("h2");
+    title.className = "scene3-report-card-title";
+    title.textContent = report.overlayCard.title;
+    card.appendChild(title);
+
+    report.overlayCard.lines.forEach((line) => {
+      const paragraph = document.createElement("p");
+      paragraph.className = "scene3-report-card-line";
+      paragraph.textContent = line;
+      card.appendChild(paragraph);
+    });
+
+    return card;
+  }
+
+  function createScene3Field(report, field) {
+    const value = getScene3FieldValue(report.id, field.id);
+    const isCorrect = isScene3FieldCorrect(field, value);
+    const activeField = report.fields.find((entry) => entry.id === activeScene3KanaFieldId) || null;
+    const activeSyncKey = activeField ? getScene3FieldSyncKey(activeField) : null;
+    const isLinkedActive = Boolean(activeSyncKey && getScene3FieldSyncKey(field) === activeSyncKey);
+
+    if (field.type === "select") {
+      const select = document.createElement("select");
+      select.className = "scene3-field scene3-field--select";
+      select.classList.toggle("is-boxed", Boolean(field.boxed));
+      select.classList.toggle("is-correct", isCorrect);
+      select.style.left = `${field.x}px`;
+      select.style.top = `${field.y}px`;
+      select.style.width = `${field.w}px`;
+      select.style.height = `${field.h}px`;
+      if (field.fontSize) {
+        select.style.fontSize = `${field.fontSize}px`;
+      }
+
+      const placeholder = document.createElement("option");
+      placeholder.value = "";
+      placeholder.textContent = field.placeholder || "選択";
+      select.appendChild(placeholder);
+
+      field.options.forEach((optionValue) => {
+        const option = document.createElement("option");
+        option.value = optionValue;
+        option.textContent = optionValue;
+        select.appendChild(option);
+      });
+
+      select.value = value;
+      select.addEventListener("pointerdown", () => {
+        if (!activeScene3KanaFieldId) {
+          return;
+        }
+
+        activeScene3KanaFieldId = null;
+        setScene3KeyboardVisible(false);
+      });
+      select.addEventListener("change", () => {
+        setScene3FieldValue(report.id, field, select.value);
+        renderScene3Report();
+      });
+      select.addEventListener("blur", () => {
+        if (!activeScene3KanaFieldId) {
+          renderScene3Report();
+        }
+      });
+      return select;
+    }
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "scene3-field scene3-field--kana";
+    button.classList.toggle("is-boxed", Boolean(field.boxed));
+    button.classList.toggle("is-correct", isCorrect);
+    button.style.left = `${field.x}px`;
+    button.style.top = `${field.y}px`;
+    button.style.width = `${field.w}px`;
+    button.style.height = `${field.h}px`;
+    if (field.fontSize) {
+      button.style.fontSize = `${field.fontSize}px`;
+    }
+    button.classList.toggle("is-empty", !value);
+    button.classList.toggle("is-active", isLinkedActive);
+    button.textContent = value || field.placeholder || "";
+    button.setAttribute("aria-label", `${report.title} ${field.id}`);
+    button.addEventListener("click", () => {
+      toggleScene3KanaField(field.id);
+    });
+
+    return button;
+  }
+
+  function renderScene3Tabs(report) {
+    const fragment = document.createDocumentFragment();
+
+    Object.values(CONFIG.sceneScreens.scene3.reports).forEach((entry) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "scene3-report-tab";
+      button.classList.toggle("is-active", entry.id === report.id);
+      button.setAttribute("role", "tab");
+      button.setAttribute("aria-selected", String(entry.id === report.id));
+      button.textContent = entry.switchLabel;
+      button.title = entry.title;
+      button.addEventListener("click", () => {
+        currentScene3Report = entry.id;
+        clearScene3ActiveField();
+        renderScreen();
+        saveAppState();
+      });
+      fragment.appendChild(button);
+    });
+
+    scene3ReportTabs.replaceChildren(fragment);
+  }
+
+  function renderScene3Report() {
+    const report = getCurrentScene3Report();
+    renderScene3Tabs(report);
+
+    const fragment = document.createDocumentFragment();
+    const overlayCard = createScene3OverlayCard(report);
+    if (overlayCard) {
+      fragment.appendChild(overlayCard);
+    }
+
+    report.fields.forEach((field) => {
+      fragment.appendChild(createScene3Field(report, field));
+    });
+
+    scene3FieldLayer.replaceChildren(fragment);
+    setScene3KeyboardVisible(Boolean(activeScene3KanaFieldId));
   }
 
   function getAllowedScreenSet(progressRule) {
@@ -668,10 +1429,6 @@
     return CONFIG.buttons[buttonId]?.targetScene;
   }
 
-  function getButtonTargetScene3View(buttonId) {
-    return CONFIG.buttons[buttonId]?.targetScene3View;
-  }
-
   function getSceneButtonCode(buttonId) {
     if (buttonId === "button100") {
       return 100;
@@ -688,10 +1445,6 @@
     return null;
   }
 
-  function isScene3ViewAvailable(viewId) {
-    return Boolean(CONFIG.sceneScreens.scene3.views[viewId]);
-  }
-
   function canActivateButton(buttonId) {
     const progressRule = getProgressRule();
     const visibleTokens = new Set(progressRule.visibleImages || []);
@@ -704,19 +1457,6 @@
 
       const sceneButtonCode = getSceneButtonCode(buttonId);
       return sceneButtonCode !== null && visibleTokens.has(sceneButtonCode);
-    }
-
-    const targetScene3View = getButtonTargetScene3View(buttonId);
-    if (targetScene3View) {
-      if (currentScene !== "scene3" || !isScene3ViewAvailable(targetScene3View)) {
-        return false;
-      }
-
-      if (buttonId === "button301") {
-        return currentProgress >= 7;
-      }
-
-      return true;
     }
 
     if (buttonId === "progressPrev") {
@@ -781,6 +1521,7 @@
   function renderScreen() {
     if (currentScene === "scene2") {
       setScene2Active(true);
+      setScene3Active(false);
       renderHotspots();
       return;
     }
@@ -788,12 +1529,15 @@
     setScene2Active(false);
 
     if (currentScene === "scene3") {
-      const scene3View = CONFIG.sceneScreens.scene3.views[currentScene3View]
-        || CONFIG.sceneScreens.scene3.views[CONFIG.sceneScreens.scene3.defaultView];
-      imageEl.src = scene3View.image;
+      const report = getCurrentScene3Report();
+      setScene3Active(true);
+      imageEl.src = report.image;
+      renderScene3Report();
       renderHotspots();
       return;
     }
+
+    setScene3Active(false);
 
     const progressRule = getProgressRule();
     const allowedScreens = getAllowedScreenSet(progressRule);
@@ -819,6 +1563,7 @@
     currentScene = "scene1";
     currentScreen = screenId;
     renderScreen();
+    saveAppState();
   }
 
   function showImage(imageNo) {
@@ -837,9 +1582,10 @@
 
     currentScene = sceneId;
     if (sceneId === "scene3") {
-      currentScene3View = CONFIG.sceneScreens.scene3.defaultView;
+      currentScene3Report = CONFIG.sceneScreens.scene3.defaultReport;
     }
     renderScreen();
+    saveAppState();
   }
 
   function handleButtonClick(buttonId) {
@@ -851,16 +1597,10 @@
     if (targetScene) {
       currentScene = targetScene;
       if (targetScene === "scene3") {
-        currentScene3View = CONFIG.sceneScreens.scene3.defaultView;
+        currentScene3Report = CONFIG.sceneScreens.scene3.defaultReport;
       }
       renderScreen();
-      return;
-    }
-
-    const targetScene3View = getButtonTargetScene3View(buttonId);
-    if (targetScene3View) {
-      currentScene3View = targetScene3View;
-      renderScreen();
+      saveAppState();
       return;
     }
 
@@ -899,7 +1639,9 @@
       currentScreen = getStartScreen(progressRule);
     }
 
+    syncScene2UnlockState({ resetInput: true });
     renderScreen();
+    saveAppState();
   }
 
   function preloadImages() {
@@ -908,7 +1650,7 @@
       img.src = screen.image;
     });
 
-    Object.values(CONFIG.sceneScreens.scene3.views).forEach((screen) => {
+    Object.values(CONFIG.sceneScreens.scene3.reports).forEach((screen) => {
       const img = new Image();
       img.src = screen.image;
     });
@@ -926,39 +1668,54 @@
   }
 
   function setupScene2Search() {
-    ["focus", "click", "keyup", "select"].forEach((eventName) => {
-      scene2SearchInput.addEventListener(eventName, syncScene2Selection);
-    });
+    const bindScene2TextInput = (input) => {
+      ["focus", "click", "keyup", "select"].forEach((eventName) => {
+        input.addEventListener(eventName, syncScene2Selection);
+      });
 
-    scene2SearchInput.addEventListener("pointerdown", () => {
-      if (isScene2KeyboardCollapsed) {
-        setScene2KeyboardCollapsed(false);
-      }
-    });
+      input.addEventListener("pointerdown", () => {
+        if (isScene2KeyboardCollapsed) {
+          setScene2KeyboardCollapsed(false);
+        }
+      });
 
-    scene2SearchInput.addEventListener("compositionstart", () => {
-      isScene2Composing = true;
-    });
+      input.addEventListener("compositionstart", () => {
+        isScene2Composing = true;
+      });
 
-    scene2SearchInput.addEventListener("compositionend", () => {
-      isScene2Composing = false;
-      normalizeScene2Input();
-      syncScene2Selection();
-    });
+      input.addEventListener("compositionend", () => {
+        isScene2Composing = false;
+        normalizeScene2Input(input);
+        syncScene2Selection();
+      });
 
-    scene2SearchInput.addEventListener("input", () => {
-      if (!isScene2Composing) {
-        normalizeScene2Input();
-      }
-      syncScene2Selection();
-    });
+      input.addEventListener("input", () => {
+        if (!isScene2Composing) {
+          normalizeScene2Input(input);
+        }
+        syncScene2Selection();
+        saveAppState();
+      });
+    };
+
+    bindScene2TextInput(scene2SearchInput);
+    bindScene2TextInput(scene2GateInput);
 
     scene2SearchForm.addEventListener("submit", (event) => {
       event.preventDefault();
       submitScene2Search();
     });
 
+    scene2GateForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      submitScene2Unlock();
+    });
+
     scene2CloseButton.addEventListener("click", () => {
+      showScene("scene1");
+    });
+
+    scene2GateCloseButton.addEventListener("click", () => {
       showScene("scene1");
     });
 
@@ -969,6 +1726,15 @@
     scene2DetailModal.addEventListener("click", (event) => {
       if (event.target === scene2DetailModal) {
         closeScene2Detail();
+      }
+    });
+  }
+
+  function setupScene3Report() {
+    scene3Ui.addEventListener("click", (event) => {
+      if (event.target === scene3Ui || event.target === scene3FieldLayer) {
+        clearScene3ActiveField();
+        renderScene3Report();
       }
     });
   }
@@ -991,12 +1757,20 @@
     ensureHotspots();
     preloadImages();
     createScene2Keyboard();
+    createScene3Keyboard();
     updateScene2KeyboardVisibility();
     setScene2Active(false);
-    renderScene2Results("");
-    setProgress(CONFIG.progress[0].level, true);
+    setScene3Active(false);
+    loadAppState();
+    syncScene2UnlockState();
+    normalizeScene2Input(scene2SearchInput);
+    normalizeScene2Input(scene2GateInput);
+    updateScene2Mode();
+    renderScene2Results(scene2SearchInput.value);
+    renderScreen();
     updateStageScale();
     setupScene2Search();
+    setupScene3Report();
     setupFullscreenToggle();
     setupKeyboardForDevOnly();
 
@@ -1009,7 +1783,7 @@
       setProgress,
       showImage,
       showScene,
-      getState: () => ({ currentScene, currentScene3View, currentScreen, currentProgress }),
+      getState: () => ({ currentScene, currentScene3Report, currentScreen, currentProgress }),
       config: CONFIG,
     };
   }

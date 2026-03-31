@@ -107,6 +107,86 @@ body.scene2-keyboard-visible .scene2-panel {
   grid-template-rows: auto 1fr auto;
 }
 
+body.scene2-locked .scene2-panel {
+  grid-template-rows: 1fr auto;
+}
+
+.scene2-search-shell {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 28px;
+  min-height: 0;
+}
+
+.scene2-gate {
+  display: none;
+  min-height: 0;
+  align-content: center;
+  justify-items: center;
+  gap: 24px;
+  padding: 12px 40px 0;
+}
+
+body.scene2-locked .scene2-gate {
+  display: grid;
+}
+
+body.scene2-locked .scene2-search-shell {
+  display: none;
+}
+
+.scene2-gate-head {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 96px 1fr 96px;
+  align-items: center;
+}
+
+.scene2-gate-spacer {
+  width: 96px;
+  height: 86px;
+}
+
+.scene2-gate-title {
+  margin: 0;
+  text-align: center;
+  font-size: 62px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+}
+
+.scene2-gate-text {
+  margin: 0;
+  text-align: center;
+  font-size: 26px;
+  line-height: 1.6;
+}
+
+.scene2-gate-row {
+  width: min(760px, 100%);
+  display: grid;
+  grid-template-columns: 1fr 170px;
+  gap: 14px;
+  align-items: stretch;
+  margin: 0;
+}
+
+.scene2-gate-button {
+  min-width: 170px;
+}
+
+.scene2-gate-feedback {
+  min-height: 1.6em;
+  margin: 0;
+  font-size: 24px;
+  line-height: 1.4;
+  color: #ff9d9d;
+}
+
+.scene2-gate-feedback.is-success {
+  color: #77d9ff;
+}
+
 .scene2-close-button {
   width: 96px;
   min-height: 86px;
@@ -277,6 +357,182 @@ body.scene2-keyboard-visible .scene2-keyboard {
   align-content: start;
 }
 
+#scene3-ui {
+  position: absolute;
+  inset: 0;
+  display: none;
+  z-index: 3;
+  pointer-events: none;
+}
+
+body.scene3-active #scene3-ui {
+  display: block;
+}
+
+.scene3-report-toolbar,
+.scene3-keyboard {
+  pointer-events: auto;
+}
+
+.scene3-field-layer {
+  pointer-events: none;
+}
+
+.scene3-report-toolbar,
+.scene3-field-layer,
+#screen-image,
+#hotspot-layer {
+  transition: transform 240ms ease;
+}
+
+body.scene3-active.scene3-keyboard-visible .scene3-report-toolbar,
+body.scene3-active.scene3-keyboard-visible .scene3-field-layer,
+body.scene3-active.scene3-keyboard-visible #screen-image,
+body.scene3-active.scene3-keyboard-visible #hotspot-layer {
+  transform: translateY(-280px);
+}
+
+.scene3-report-toolbar {
+  position: absolute;
+  top: 210px;
+  right: 52px;
+}
+
+.scene3-report-tabs {
+  display: inline-flex;
+  gap: 12px;
+}
+
+.scene3-report-tab {
+  min-width: 92px;
+  min-height: 48px;
+  border: 2px solid #dee1c6;
+  background: rgba(0, 0, 0, 0.88);
+  color: #dee1c6;
+  font: inherit;
+  font-size: 20px;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+}
+
+.scene3-report-tab.is-active {
+  background: #dee1c6;
+  color: #000;
+}
+
+.scene3-report-tab:focus {
+  outline: 3px solid rgba(222, 225, 198, 0.45);
+  outline-offset: 2px;
+}
+
+.scene3-field-layer {
+  position: absolute;
+  inset: 0;
+}
+
+.scene3-report-card {
+  position: absolute;
+  border: 3px solid #dee1c6;
+  background: rgba(0, 0, 0, 0.9);
+  color: #dee1c6;
+  padding: 34px 40px;
+  pointer-events: none;
+}
+
+.scene3-report-card-title {
+  margin: 0 0 18px;
+  font-size: 34px;
+  font-weight: 700;
+}
+
+.scene3-report-card-line {
+  margin: 0 0 10px;
+  font-size: 24px;
+  line-height: 1.6;
+}
+
+.scene3-field {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 10px;
+  border: 0;
+  background: transparent;
+  color: #111;
+  font: inherit;
+  font-size: 22px;
+  line-height: 1;
+  pointer-events: auto;
+}
+
+.scene3-field.is-boxed {
+  border: 2px solid rgba(222, 225, 198, 0.9);
+  background: rgba(222, 225, 198, 0.92);
+}
+
+.scene3-field.is-correct {
+  color: #ff0000;
+}
+
+.scene3-field::placeholder {
+  color: rgba(17, 17, 17, 0.35);
+}
+
+.scene3-field:focus {
+  outline: 3px solid rgba(255, 95, 95, 0.75);
+  outline-offset: 1px;
+}
+
+.scene3-field--kana {
+  cursor: pointer;
+}
+
+.scene3-field--kana.is-empty {
+  color: rgba(17, 17, 17, 0.35);
+}
+
+.scene3-field--kana.is-active {
+  box-shadow: inset 0 0 0 3px rgba(255, 95, 95, 0.82);
+}
+
+.scene3-field--select {
+  appearance: none;
+  cursor: pointer;
+}
+
+.scene3-field--select::-ms-expand {
+  display: none;
+}
+
+.scene3-field-hint {
+  position: absolute;
+  bottom: -18px;
+  left: 0;
+  color: rgba(222, 225, 198, 0.85);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+}
+
+.scene3-keyboard {
+  position: absolute;
+  right: 40px;
+  bottom: 28px;
+  left: 40px;
+  display: grid;
+  grid-template-columns: repeat(11, minmax(0, 1fr));
+  gap: 8px;
+  padding: 14px;
+  border: 3px solid #dee1c6;
+  background: rgba(0, 0, 0, 0.96);
+  transform: translateY(calc(100% + 32px));
+  transition: transform 240ms ease;
+}
+
+body.scene3-active.scene3-keyboard-visible .scene3-keyboard {
+  transform: translateY(0);
+}
+
 .scene2-keyboard-key {
   min-height: 52px;
   border: 2px solid #dee1c6;
@@ -310,6 +566,26 @@ body.scene2-keyboard-visible .scene2-keyboard {
 .scene2-keyboard-key:focus {
   outline: 3px solid rgba(222, 225, 198, 0.45);
   outline-offset: 2px;
+}
+
+.scene3-keyboard .scene2-keyboard-key {
+  min-height: 42px;
+  font-size: 26px;
+}
+
+.scene3-keyboard .scene2-keyboard-key[data-action="delete"],
+.scene3-keyboard .scene2-keyboard-key[data-action="clear"] {
+  font-size: 16px;
+}
+
+.scene3-keyboard .scene2-keyboard-key[data-action="dakuten"],
+.scene3-keyboard .scene2-keyboard-key[data-action="handakuten"],
+.scene3-keyboard .scene2-keyboard-key[data-action="small"] {
+  font-size: 22px;
+}
+
+.scene3-keyboard .scene2-keyboard-spacer {
+  min-height: 42px;
 }
 
 #hotspot-layer {
